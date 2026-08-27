@@ -63,7 +63,7 @@ export function LoginForm() {
 
   if (sent) {
     return (
-      <div className="rounded-lg border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 text-center shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <p className="font-medium">Link enviado! ✅</p>
         <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
           Confira sua caixa de entrada em <strong>{email}</strong> e clique no
@@ -74,15 +74,15 @@ export function LoginForm() {
   }
 
   return (
-    <div className="w-full max-w-sm">
-      <div className="mb-6 flex rounded-lg border border-zinc-200 p-1 text-sm dark:border-zinc-800">
+    <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="mb-6 flex rounded-lg bg-zinc-100 p-1 text-sm dark:bg-zinc-800">
         <button
           type="button"
           onClick={() => setMode("magic-link")}
           className={`flex-1 rounded-md py-1.5 transition ${
             mode === "magic-link"
-              ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-              : "text-zinc-600 dark:text-zinc-400"
+              ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-white"
+              : "text-zinc-500 dark:text-zinc-400"
           }`}
         >
           Link mágico
@@ -92,8 +92,8 @@ export function LoginForm() {
           onClick={() => setMode("password")}
           className={`flex-1 rounded-md py-1.5 transition ${
             mode === "password"
-              ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-              : "text-zinc-600 dark:text-zinc-400"
+              ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-white"
+              : "text-zinc-500 dark:text-zinc-400"
           }`}
         >
           E-mail e senha
@@ -116,7 +116,7 @@ export function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="voce@email.com"
-            className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-zinc-500 dark:border-zinc-700 dark:bg-zinc-900"
+            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-900"
           />
         </div>
 
@@ -133,7 +133,7 @@ export function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-zinc-500 dark:border-zinc-700 dark:bg-zinc-900"
+              className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-900"
             />
           </div>
         )}
@@ -143,7 +143,7 @@ export function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="rounded-md bg-zinc-900 py-2 text-sm font-medium text-white transition hover:bg-zinc-700 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+          className="rounded-lg bg-indigo-600 py-2 text-sm font-medium text-white transition hover:bg-indigo-500 disabled:opacity-60"
         >
           {loading
             ? "Enviando..."

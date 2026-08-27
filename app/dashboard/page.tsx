@@ -1,44 +1,58 @@
 import { createClient } from "@/lib/supabase/server";
+import { getProductsWithAccess, greeting } from "@/lib/dashboard";
 import { ProductCard } from "@/components/product-card";
 import { ImplementacaoUpsellCard } from "@/components/upsell-card";
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const [{ data: products }, { data: access }] = await Promise.all([
-    supabase.from("products").select("*").order("sort_order"),
-    supabase.from("product_access").select("product_id").is("revoked_at", null),
-  ]);
+  const products = await getProductsWithAccess(supabase);
+  const filtered = q
+    ? products.filter((p) =>
+        p.name.toLowerCase().includes(q.toLowerCase())
+      )
+    : products;
 
-  const unlockedIds = new Set((access ?? []).map((a) => a.product_id));
   const firstName = (user?.user_metadata?.full_name as string | undefined)
     ?.split(" ")[0];
 
   return (
     <div className="flex flex-col gap-10">
       <div>
-        <h1 className="text-2xl font-semibold">
-          {firstName ? `${firstName}, bem-vindo` : "Bem-vindo"} 👋
+        <h1 className="text-3xl font-semibold tracking-tight text-balance">
+          {greeting()}
+          {firstName ? `, ${firstName}` : ""}
         </h1>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-          Aqui estão seus produtos e módulos.
+        <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+          Seus produtos e módulos, todos em um só lugar.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {(products ?? []).map((product) => (
-          <ProductCard
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            description={product.description}
-            unlocked={unlockedIds.has(product.id)}
-          />
-        ))}
-      </div>
+      {filtered.length > 0 ? (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              description={product.description}
+              unlocked={product.unlocked}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm text-zinc-500">
+          Nenhum produto encontrado para &ldquo;{q}&rdquo;.
+        </p>
+      )}
 
       <ImplementacaoUpsellCard />
     </div>

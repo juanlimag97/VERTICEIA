@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { SignOutButton } from "@/components/sign-out-button";
+import { getProductsWithAccess } from "@/lib/dashboard";
+import { Sidebar } from "@/components/dashboard/sidebar";
+import { Topbar } from "@/components/dashboard/topbar";
 
 export default async function DashboardLayout({
   children,
@@ -18,19 +19,24 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
+  const products = await getProductsWithAccess(supabase);
+  const fullName = (user.user_metadata?.full_name as string | undefined) ?? "";
+
   return (
-    <div className="flex min-h-full flex-col">
-      <header className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <Link href="/dashboard" className="font-semibold tracking-tight">
-            Vértice IA
-          </Link>
-          <SignOutButton />
-        </div>
-      </header>
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
-        {children}
-      </main>
+    <div className="flex h-full min-h-screen bg-zinc-50 dark:bg-zinc-950">
+      <Sidebar
+        products={products.map((p) => ({
+          id: p.id,
+          name: p.name,
+          unlocked: p.unlocked,
+        }))}
+      />
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Topbar name={fullName} email={user.email ?? ""} />
+        <main className="flex-1 px-4 py-8 lg:px-8">
+          <div className="mx-auto w-full max-w-5xl">{children}</div>
+        </main>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ export function VideoPlayer({ pandaVideoId }: { pandaVideoId: string }) {
 
   if (!base) {
     return (
-      <div className="flex aspect-video items-center justify-center rounded-xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
+      <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
         Configure NEXT_PUBLIC_PANDA_PLAYER_BASE_URL para exibir o vídeo.
       </div>
     );
@@ -12,7 +12,7 @@ export function VideoPlayer({ pandaVideoId }: { pandaVideoId: string }) {
   const src = `${base.replace(/\/$/, "")}/embed/?v=${encodeURIComponent(pandaVideoId)}`;
 
   return (
-    <div className="aspect-video overflow-hidden rounded-xl bg-black">
+    <div className="aspect-video overflow-hidden rounded-2xl bg-black">
       <iframe
         src={src}
         className="h-full w-full"

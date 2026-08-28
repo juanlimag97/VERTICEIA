@@ -27,6 +27,10 @@ export function LoginForm() {
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
+        // Só quem já tem conta (criada pelo webhook da Hubla) recebe o
+        // link — evita que qualquer visitante crie contas vazias ou
+        // consiga mandar e-mail nosso pra um endereço arbitrário.
+        shouldCreateUser: false,
         emailRedirectTo: `${window.location.origin}/auth/callback?redirectTo=${encodeURIComponent(
           redirectTo
         )}`,
@@ -34,7 +38,10 @@ export function LoginForm() {
     });
 
     setLoading(false);
-    if (error) {
+    // Se o erro for "conta não existe" (por causa do shouldCreateUser
+    // acima), mostra a mesma tela de "link enviado" mesmo assim — assim
+    // não dá pra descobrir por tentativa quais e-mails já são clientes.
+    if (error && !/signup/i.test(error.message)) {
       setError(error.message);
       return;
     }

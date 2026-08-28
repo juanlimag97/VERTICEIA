@@ -47,10 +47,15 @@ npm install
 2. Em **Project Settings → API**, copie a `Project URL` e a `anon public
    key` e a `service_role key`.
 3. Em **SQL Editor**, rode o conteúdo de
-   [`supabase/migrations/0001_init.sql`](./supabase/migrations/0001_init.sql).
-   Isso cria as tabelas `profiles`, `products`, `product_access`, as
-   policies de RLS e já insere o catálogo inicial (Vértice IA, Perfil que
-   Converte, Reputação 5 Estrelas, Formatos de Criativo).
+   [`supabase/migrations/0001_init.sql`](./supabase/migrations/0001_init.sql)
+   e depois de
+   [`supabase/migrations/0002_product_progress.sql`](./supabase/migrations/0002_product_progress.sql),
+   nessa ordem. O primeiro cria as tabelas `profiles`, `products`,
+   `product_access`, as policies de RLS e já insere o catálogo inicial
+   (Vértice IA, Perfil que Converte, Reputação 5 Estrelas, Formatos de
+   Criativo). O segundo adiciona o progresso ("marcar como concluída") e a
+   coluna `clone_url` usada no card "Receber o projeto" da página de
+   produto.
 4. Em **Authentication → URL Configuration**, adicione a URL do seu domínio
    (e `http://localhost:3000` em dev) em *Site URL* e em *Redirect URLs*
    adicione `<sua-url>/auth/callback`.
@@ -89,6 +94,10 @@ npm install
 5. Para o card de "Implementação (R$ 1.500)", pegue o link de checkout
    desse produto na Hubla e coloque em
    `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL`.
+6. Se algum produto tiver um projeto pra "clonar" (ex: um projeto Lovable
+   pronto), preencha a coluna `clone_url` desse produto na tabela `products`
+   com o link — ele aparece no card "Receber o projeto" da página do
+   produto.
 
 ### 5. Variáveis de ambiente
 
@@ -106,6 +115,7 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_PANDA_PLAYER_BASE_URL` | Painel do Panda Video |
 | `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` | Link de checkout da Hubla |
 | `HUBLA_WEBHOOK_TOKEN` | Gerado ao criar o webhook no painel da Hubla |
+| `NEXT_PUBLIC_SUPPORT_EMAIL` | E-mail de suporte (usado no "Precisa de ajuda?") |
 
 Configure as mesmas variáveis em **Vercel → Project Settings →
 Environment Variables** antes do deploy.

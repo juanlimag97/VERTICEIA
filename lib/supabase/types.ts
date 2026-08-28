@@ -33,6 +33,7 @@ export type Database = {
           description: string | null;
           panda_video_id: string | null;
           hubla_product_id: string | null;
+          clone_url: string | null;
           sort_order: number;
           created_at: string;
         };
@@ -42,6 +43,7 @@ export type Database = {
           description?: string | null;
           panda_video_id?: string | null;
           hubla_product_id?: string | null;
+          clone_url?: string | null;
           sort_order?: number;
           created_at?: string;
         };
@@ -51,6 +53,7 @@ export type Database = {
           description?: string | null;
           panda_video_id?: string | null;
           hubla_product_id?: string | null;
+          clone_url?: string | null;
           sort_order?: number;
           created_at?: string;
         };
@@ -65,6 +68,7 @@ export type Database = {
           hubla_transaction_id: string | null;
           granted_at: string;
           revoked_at: string | null;
+          completed_at: string | null;
         };
         Insert: {
           id?: string;
@@ -74,6 +78,7 @@ export type Database = {
           hubla_transaction_id?: string | null;
           granted_at?: string;
           revoked_at?: string | null;
+          completed_at?: string | null;
         };
         Update: {
           id?: string;
@@ -83,6 +88,7 @@ export type Database = {
           hubla_transaction_id?: string | null;
           granted_at?: string;
           revoked_at?: string | null;
+          completed_at?: string | null;
         };
         Relationships: [];
       };

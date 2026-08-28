@@ -8,6 +8,7 @@ import { ExpandableDescription } from "@/components/product/expandable-descripti
 import { CompleteToggle } from "@/components/product/complete-toggle";
 import { FavoriteButton } from "@/components/product/favorite-button";
 import { CloneCard } from "@/components/product/clone-card";
+import { CreativeFormatsGrid } from "@/components/product/creative-formats-grid";
 
 export default async function ProductPage({
   params,
@@ -76,20 +77,24 @@ export default async function ProductPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          {product.panda_video_id ? (
-            <VideoPlayer pandaVideoId={product.panda_video_id} />
-          ) : (
-            <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
-              Vídeo ainda não configurado para este produto.
-            </div>
-          )}
+      {product.id === "formatos-de-criativo" ? (
+        <CreativeFormatsGrid />
+      ) : (
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            {product.panda_video_id ? (
+              <VideoPlayer pandaVideoId={product.panda_video_id} />
+            ) : (
+              <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
+                Vídeo ainda não configurado para este produto.
+              </div>
+            )}
+          </div>
+          <div className="lg:col-span-1">
+            <CloneCard cloneUrl={product.clone_url} />
+          </div>
         </div>
-        <div className="lg:col-span-1">
-          <CloneCard cloneUrl={product.clone_url} />
-        </div>
-      </div>
+      )}
     </div>
   );
 }

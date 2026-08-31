@@ -6,6 +6,12 @@ import { creativeFormats, type CreativeFormat } from "@/lib/creative-formats";
 
 export function CreativeFormatsGrid() {
   const [open, setOpen] = useState<CreativeFormat | null>(null);
+  const [activeExample, setActiveExample] = useState(0);
+
+  function openFormat(format: CreativeFormat) {
+    setActiveExample(0);
+    setOpen(format);
+  }
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -22,7 +28,7 @@ export function CreativeFormatsGrid() {
           <button
             key={format.number}
             type="button"
-            onClick={() => setOpen(format)}
+            onClick={() => openFormat(format)}
             className="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white text-left transition hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-200/60 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:shadow-none"
           >
             <div className="flex flex-1 items-center gap-3 p-4">
@@ -72,23 +78,35 @@ export function CreativeFormatsGrid() {
             <p className="mt-6 text-[11px] font-medium tracking-widest text-zinc-500 uppercase">
               Exemplos
             </p>
-            <div className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {open.driveFileIds.map((fileId, index) => (
-                <div key={fileId} className="flex flex-col gap-1.5">
-                  <span className="text-xs font-medium text-zinc-500">
-                    Exemplo {index + 1}
-                  </span>
-                  <div className="aspect-video overflow-hidden rounded-lg bg-black">
-                    <iframe
-                      src={`https://drive.google.com/file/d/${fileId}/preview`}
-                      className="h-full w-full"
-                      allow="autoplay"
-                      allowFullScreen
-                    />
-                  </div>
-                </div>
-              ))}
+
+            <div className="mx-auto mt-2 aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-xl bg-black">
+              <iframe
+                key={open.driveFileIds[activeExample]}
+                src={`https://drive.google.com/file/d/${open.driveFileIds[activeExample]}/preview`}
+                className="h-full w-full"
+                allow="autoplay"
+                allowFullScreen
+              />
             </div>
+
+            {open.driveFileIds.length > 1 && (
+              <div className="mt-4 flex flex-wrap justify-center gap-2">
+                {open.driveFileIds.map((fileId, index) => (
+                  <button
+                    key={fileId}
+                    type="button"
+                    onClick={() => setActiveExample(index)}
+                    className={`rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase transition ${
+                      index === activeExample
+                        ? "bg-indigo-600 text-white"
+                        : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
+                    }`}
+                  >
+                    Exemplo {index + 1}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}

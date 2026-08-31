@@ -37,6 +37,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# scouting prototype (python venv/output local ao dev)
+scouting/output/
+scouting/__pycache__/
+scouting/.venv/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

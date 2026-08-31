@@ -50,7 +50,9 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
       Implementação (R$ 1.500).
 - [ ] Colar os templates de e-mail (convite + redefinição de senha) no
       Supabase — texto pronto em
-      [`docs/email-templates.md`](./email-templates.md).
+      [`docs/email-templates.md`](./email-templates.md). **Atualizei o
+      visual** (saudação pelo nome, box de acesso, passos numerados) —
+      se você já tinha colado a versão antiga, precisa colar de novo.
 
 ## 🟢 Decisões de conteúdo
 

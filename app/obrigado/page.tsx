@@ -41,12 +41,14 @@ export default function ObrigadoPage() {
   ].filter((step): step is NonNullable<typeof step> => step !== null);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950">
+    <div className="min-h-screen overflow-hidden bg-white dark:bg-zinc-950">
       <header className="flex h-16 items-center px-6 lg:px-10">
         <Logo className="text-xs" />
       </header>
 
-      <main className="mx-auto flex max-w-2xl flex-col items-center gap-4 px-6 pt-10 pb-20 text-center">
+      <main className="relative mx-auto flex max-w-2xl flex-col items-center gap-4 px-6 pt-10 pb-20 text-center">
+        <div className="pointer-events-none absolute -top-16 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-indigo-500/10 blur-3xl" />
+
         <span className="flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
           <CheckCircle2 className="h-4 w-4" />
           Sua compra foi aprovada
@@ -105,9 +107,33 @@ export default function ObrigadoPage() {
         </div>
       </main>
 
-      <footer className="border-t border-zinc-100 px-6 py-10 text-center dark:border-zinc-900">
+      <footer className="border-t border-zinc-100 bg-zinc-50 px-6 py-12 text-center dark:border-zinc-900 dark:bg-zinc-900/40">
         <Logo className="justify-center text-xs" />
-        <div className="mt-4 flex items-center justify-center gap-4 text-zinc-500">
+        <p className="mx-auto mt-3 max-w-sm text-sm text-zinc-500">
+          SDR de IA integrado ao seu CRM — atende, qualifica e agenda
+          reuniões automaticamente.
+        </p>
+
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-zinc-500">
+          <Link href="/inicio" className="transition hover:text-zinc-900 dark:hover:text-zinc-200">
+            Início
+          </Link>
+          <Link href="/login" className="transition hover:text-zinc-900 dark:hover:text-zinc-200">
+            Entrar
+          </Link>
+          {supportUrl && (
+            <a
+              href={supportUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-zinc-900 dark:hover:text-zinc-200"
+            >
+              Suporte
+            </a>
+          )}
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-4 text-zinc-500">
           <a
             href={instagramUrl}
             target="_blank"
@@ -133,6 +159,10 @@ export default function ObrigadoPage() {
             </a>
           )}
         </div>
+
+        <p className="mt-8 text-xs text-zinc-400">
+          © {new Date().getFullYear()} Vértice IA. Todos os direitos reservados.
+        </p>
       </footer>
     </div>
   );

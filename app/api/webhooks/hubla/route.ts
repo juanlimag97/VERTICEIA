@@ -139,9 +139,13 @@ async function getOrCreateProfileId(
     return existingProfile.id;
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   const { data: invited, error: inviteError } =
     await supabase.auth.admin.inviteUserByEmail(email, {
       data: fullName ? { full_name: fullName } : undefined,
+      redirectTo: siteUrl
+        ? `${siteUrl}/auth/callback?redirectTo=/auth/set-password`
+        : undefined,
     });
 
   if (!inviteError && invited.user) {

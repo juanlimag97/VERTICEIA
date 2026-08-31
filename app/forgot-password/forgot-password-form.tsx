@@ -2,18 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
-export function LoginForm() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") ?? "/dashboard";
-
+export function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -21,18 +16,28 @@ export function LoginForm() {
     setLoading(true);
 
     const supabase = createClient();
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/auth/callback?redirectTo=/auth/set-password`,
     });
 
     setLoading(false);
     if (error) {
-      setError("E-mail ou senha inválidos.");
+      setError(error.message);
       return;
     }
-    router.push(redirectTo);
-    router.refresh();
+    setSent(true);
+  }
+
+  if (sent) {
+    return (
+      <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 text-center shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <p className="font-medium">Se esse e-mail tiver conta, o link chegou ✅</p>
+        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+          Confira sua caixa de entrada em <strong>{email}</strong> (e o spam)
+          e clique no link para criar uma nova senha.
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -54,30 +59,6 @@ export function LoginForm() {
           />
         </div>
 
-        <div className="flex flex-col gap-1.5">
-          <div className="flex items-center justify-between">
-            <label htmlFor="password" className="text-sm font-medium">
-              Senha
-            </label>
-            <Link
-              href="/forgot-password"
-              className="text-xs text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
-            >
-              Esqueci minha senha
-            </Link>
-          </div>
-          <input
-            id="password"
-            type="password"
-            required
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
-            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-900"
-          />
-        </div>
-
         {error && <p className="text-sm text-red-600">{error}</p>}
 
         <button
@@ -85,8 +66,15 @@ export function LoginForm() {
           disabled={loading}
           className="rounded-lg bg-indigo-600 py-2 text-sm font-medium text-white transition hover:bg-indigo-500 disabled:opacity-60"
         >
-          {loading ? "Entrando..." : "Entrar"}
+          {loading ? "Enviando..." : "Enviar link de redefinição"}
         </button>
+
+        <Link
+          href="/login"
+          className="text-center text-sm text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
+        >
+          Voltar para o login
+        </Link>
       </form>
     </div>
   );

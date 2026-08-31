@@ -7,8 +7,8 @@ automaticamente quando alguém compra).
 ## Stack
 
 - **Next.js + Vercel** — app e deploy
-- **Supabase** — autenticação (login/senha ou magic link) e banco de dados
-  (quem comprou o quê)
+- **Supabase** — autenticação (e-mail e senha) e banco de dados (quem
+  comprou o quê)
 - **Panda Video** — hospedagem e player dos vídeos
 - **Webhook da Hubla** — dispara `customer.member_added` /
   `customer.member_removed` quando alguém compra ou perde acesso, e o app
@@ -16,7 +16,11 @@ automaticamente quando alguém compra).
 
 ## O que já está pronto
 
-- Tela de login com **link mágico** ou **e-mail e senha**
+- Login só por **e-mail e senha** (sem link mágico) + tela de **esqueci
+  minha senha**
+- Fluxo de primeiro acesso: a Hubla avisa a compra → o app cria a conta →
+  a pessoa recebe um e-mail de convite → clica → cai numa tela de **criar
+  senha** → entra no dashboard
 - Rotas `/dashboard/*` protegidas por middleware (`proxy.ts`)
 - Tela de boas-vindas personalizada ("Fulano, bem-vindo") com cards de
   acesso por produto (bloqueados visualmente se o usuário não tem acesso)
@@ -59,10 +63,22 @@ npm install
 4. Em **Authentication → URL Configuration**, adicione a URL do seu domínio
    (e `http://localhost:3000` em dev) em *Site URL* e em *Redirect URLs*
    adicione `<sua-url>/auth/callback`.
-5. Em **Authentication → Emails**, o template de "Magic Link" já funciona
-   com o provedor de e-mail padrão do Supabase (baixo volume/testes). Para
-   produção, configure um SMTP próprio em **Project Settings → Auth → SMTP
-   Settings**.
+5. Coloque essa mesma URL de produção em `NEXT_PUBLIC_SITE_URL` (ver tabela
+   de variáveis mais abaixo) — é ela que o webhook da Hubla usa pra montar
+   o link do e-mail de convite.
+6. **Personalizar os e-mails** (convite e redefinição de senha) — por
+   padrão o Supabase manda um e-mail genérico dele mesmo. Tem duas partes
+   pra deixar com a cara da Vértice IA:
+   - **Conteúdo do e-mail** (dá pra fazer agora, sem precisar de domínio):
+     em **Authentication → Email Templates**, edite os templates **"Invite
+     user"** e **"Reset Password"**. Modelo pronto pra colar em
+     [`docs/email-templates.md`](./docs/email-templates.md).
+   - **Remetente com o seu domínio** (só depois que tiver o domínio): em
+     **Project Settings → Auth → SMTP Settings**, configure um provedor de
+     envio (Resend, Postmark, SendGrid, Amazon SES etc.) com um endereço
+     tipo `contato@seudominio.com.br`. Enquanto isso não estiver
+     configurado, o Supabase continua enviando pelo remetente padrão dele
+     — o conteúdo do e-mail (item acima) já fica personalizado mesmo assim.
 
 ### 3. Configurar o Panda Video
 
@@ -109,6 +125,7 @@ cp .env.example .env.local
 
 | Variável | Onde conseguir |
 | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | URL de produção do site (ex: `https://verticeia.vercel.app`) |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API (**secreta**, só no servidor) |
@@ -132,8 +149,10 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 ```
 app/
-  login/                    tela de login (magic link / senha)
-  auth/callback/            troca o code do magic link pela sessão
+  login/                    tela de login (e-mail e senha)
+  forgot-password/          pede o e-mail e dispara o link de redefinição
+  auth/callback/            troca o code (convite ou redefinição) pela sessão
+  auth/set-password/        tela de criar/redefinir senha (destino do e-mail)
   dashboard/
     layout.tsx              header + guarda de sessão
     page.tsx                boas-vindas + grid de produtos + upsell
@@ -152,10 +171,9 @@ proxy.ts                    protege /dashboard/* e redireciona quem já logou
 ## Próximos passos sugeridos
 
 - Trocar o logo padrão (`public/`) pelos arquivos reais (ícone + wordmark).
-- Configurar SMTP próprio no Supabase para os e-mails de convite/magic link
-  chegarem com o remetente da marca.
-- Se quiser tela de "esqueci minha senha", o Supabase já suporta
-  (`resetPasswordForEmail`) — não implementada ainda por não ter sido pedida.
+- Assim que tiver o domínio: configurar SMTP próprio no Supabase (ver seção
+  6 do setup) pros e-mails de convite/redefinição de senha chegarem com o
+  remetente da marca.
 - Hoje o mapeamento de produto (`hubla_product_id`) e vídeo
   (`panda_video_id`) é feito direto na tabela `products` pelo SQL Editor do
   Supabase; se o catálogo crescer muito, vale montar uma telinha de admin.

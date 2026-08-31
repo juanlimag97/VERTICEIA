@@ -1,51 +1,29 @@
-// Conteúdo da página pública /inicio (link da bio). Textos marcados com
+// Conteúdo da página pública /inicio (link da bio), focada no produto
+// principal (Vértice IA — SDR de IA integrado ao CRM). Textos marcados com
 // [COLCHETES] são placeholder — troque antes de divulgar o link de verdade.
 
-export type SiteProduct = {
-  id: string;
-  name: string;
-  tagline: string;
-  price: string;
-  checkoutUrl: string;
-};
-
-export const siteProducts: SiteProduct[] = [
+export const sdrFeatures = [
   {
-    id: "vertice-ia",
-    name: "Vértice IA",
-    tagline:
-      "Do zero até implementar seu primeiro agente de IA vendendo no seu negócio.",
-    price: "[PREÇO]",
-    checkoutUrl: process.env.NEXT_PUBLIC_CHECKOUT_VERTICE_IA || "#",
+    title: "Atende 24/7 no WhatsApp",
+    description:
+      "Responde todo lead que chega, a qualquer hora, sem depender de alguém do time estar disponível.",
   },
   {
-    id: "perfil-que-converte",
-    name: "Perfil que Converte",
-    tagline:
-      "4 aulas curtas pra transformar seu Instagram comercial em máquina de agendar cliente.",
-    price: "[PREÇO]",
-    checkoutUrl: process.env.NEXT_PUBLIC_CHECKOUT_PERFIL_CONVERTE || "#",
+    title: "Qualifica pelo perfil ideal",
+    description:
+      "Conversa com o lead pra entender se ele tem o perfil certo antes de passar pro time comercial.",
   },
   {
-    id: "reputacao-5-estrelas",
-    name: "Reputação 5 Estrelas",
-    tagline:
-      "Como conseguir mais avaliações 5 estrelas no Google — com bônus de automação via WhatsApp.",
-    price: "R$ 97",
-    checkoutUrl: process.env.NEXT_PUBLIC_CHECKOUT_REPUTACAO || "#",
-  },
-  {
-    id: "formatos-de-criativo",
-    name: "Formatos de Criativo",
-    tagline:
-      "40 formatos de criativo validados, com exemplo em vídeo de cada um.",
-    price: "[PREÇO]",
-    checkoutUrl: process.env.NEXT_PUBLIC_CHECKOUT_FORMATOS || "#",
+    title: "Agenda direto no seu CRM",
+    description:
+      "Quando o lead tá qualificado, marca a reunião sozinho — sem ida e volta manual.",
   },
 ];
 
 export const siteStats: { value: string; label: string }[] = [
-  { value: "[N]", label: "negócios já aplicaram" },
-  { value: "[N]", label: "avaliações 5 estrelas geradas" },
-  { value: "[N]", label: "aulas práticas" },
+  { value: "[N]", label: "leads atendidos" },
+  { value: "[N]", label: "negócios já usam" },
+  { value: "24/7", label: "atendimento automático" },
 ];
+
+export const checkoutUrl = process.env.NEXT_PUBLIC_CHECKOUT_VERTICE_IA || "#";

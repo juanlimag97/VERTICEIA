@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, CalendarCheck, MessageCircle, Target } from "lucide-react";
 import { Logo } from "@/components/logo";
-import { ProductIcon } from "@/components/product-icon";
-import { siteProducts, siteStats } from "@/lib/site-content";
+import { sdrFeatures, siteStats, checkoutUrl } from "@/lib/site-content";
 
 export const metadata = {
-  title: "Vértice IA — Cursos e implementações de IA para o seu negócio",
+  title: "Vértice IA — SDR de IA integrado ao seu CRM",
   description:
-    "Cursos práticos e implementações prontas de IA para negócios locais: perfil que converte, reputação 5 estrelas e mais.",
+    "Um SDR de inteligência artificial que atende, qualifica e agenda reuniões automaticamente, direto no seu CRM.",
 };
+
+const FEATURE_ICONS = [MessageCircle, Target, CalendarCheck];
 
 export default function InicioPage() {
   const whatsappUrl = process.env.NEXT_PUBLIC_SUPPORT_URL;
@@ -20,32 +21,36 @@ export default function InicioPage() {
       <header className="flex h-16 items-center justify-between px-6 lg:px-10">
         <Logo className="text-xs" />
         <a
-          href="#produtos"
+          href={checkoutUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full bg-zinc-900 px-4 py-2 text-xs font-medium text-white transition hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
         >
-          Ver produtos
+          Quero meu SDR
         </a>
       </header>
 
       {/* Hero */}
       <section className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-16 text-center lg:py-24">
         <p className="text-xs font-semibold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
-          [SEU POSICIONAMENTO AQUI — ex: IA aplicada a negócios locais]
+          SDR de IA integrado ao seu CRM
         </p>
         <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-          Mais clientes, mais avaliações 5 estrelas, mais vendas — com IA
-          aplicada de verdade
+          Seu SDR de IA que atende, qualifica e agenda — direto no WhatsApp
         </h1>
         <p className="max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
-          Cursos curtos e práticos, com implementações prontas pra você
-          aplicar no seu negócio essa semana — sem enrolação.
+          Nunca mais perca um lead por falta de resposta. A Vértice IA
+          conversa com quem chega, qualifica pelo seu perfil ideal e marca
+          a reunião sozinha, direto no seu CRM.
         </p>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <a
-            href="#produtos"
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-indigo-500"
           >
-            Ver produtos
+            Quero meu SDR de IA
             <ArrowRight className="h-4 w-4" />
           </a>
           {whatsappUrl && (
@@ -59,6 +64,41 @@ export default function InicioPage() {
               Falar no WhatsApp
             </a>
           )}
+        </div>
+        <p className="text-sm text-zinc-500">
+          Já é aluno?{" "}
+          <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+            Entrar na área de membros
+          </Link>
+        </p>
+      </section>
+
+      {/* Como funciona */}
+      <section className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
+        <div className="mb-10 text-center">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            Como o seu SDR de IA trabalha
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {sdrFeatures.map((feature, index) => {
+            const Icon = FEATURE_ICONS[index] ?? MessageCircle;
+            return (
+              <div
+                key={feature.title}
+                className="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-600 dark:bg-indigo-400/10 dark:text-indigo-400">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="font-semibold">{feature.title}</h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -76,61 +116,8 @@ export default function InicioPage() {
         </div>
       </section>
 
-      {/* Produtos */}
-      <section id="produtos" className="mx-auto max-w-5xl px-6 py-16 lg:py-24">
-        <div className="mb-10 text-center">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Escolha por onde começar
-          </h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            Todos os cursos são práticos, com aula curta e passo a passo pra
-            aplicar no mesmo dia.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {siteProducts.map((product) => (
-            <div
-              key={product.id}
-              className="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
-            >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-600 dark:bg-indigo-400/10 dark:text-indigo-400">
-                <ProductIcon productId={product.id} className="h-5 w-5" />
-              </span>
-              <div className="flex-1">
-                <h3 className="font-semibold">{product.name}</h3>
-                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                  {product.tagline}
-                </p>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-zinc-500">
-                  {product.price}
-                </span>
-                <a
-                  href={product.checkoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
-                >
-                  Quero esse
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <p className="mt-6 text-center text-sm text-zinc-500">
-          Já é aluno?{" "}
-          <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
-            Entrar na área de membros
-          </Link>
-        </p>
-      </section>
-
-      {/* Implementação */}
-      <section className="mx-auto max-w-3xl px-6 pb-16 lg:pb-24">
+      {/* Implementação (upsell) */}
+      <section className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
         <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-8 text-center text-white">
           <p className="text-xs font-medium tracking-widest text-indigo-300 uppercase">
             Oferta exclusiva
@@ -139,7 +126,8 @@ export default function InicioPage() {
             Prefere que a gente implemente pra você?
           </h3>
           <p className="mt-2 text-sm text-zinc-400">
-            A equipe da Vértice IA implementa tudo do zero no seu negócio.
+            A equipe da Vértice IA configura o SDR do zero, já integrado ao
+            seu CRM.
           </p>
           <a
             href={process.env.NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL || "#"}

@@ -67,24 +67,24 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 ## 🟠 Página `/inicio` (link da bio)
 
 Página nova em `verticeia.vercel.app/inicio` (ou `/inicio` do seu domínio,
-quando tiver). Montei com texto placeholder — revisa tudo antes de colocar
-o link na bio de verdade:
+quando tiver) — **focada só no Vértice IA (SDR)**, como você pediu. Os
+outros produtos (Perfil que Converte, Reputação 5 Estrelas, Formatos de
+Criativo) não aparecem aqui — ficam só como order bump no checkout da
+Hubla, fora do nosso código. Montei com texto placeholder — revisa tudo
+antes de colocar o link na bio de verdade:
 
-- [ ] Trocar `[SEU POSICIONAMENTO AQUI]` (abaixo do header) por uma frase
-      curta de posicionamento real.
+- [ ] Revisar as 3 caixinhas de "Como o seu SDR de IA trabalha" (atende
+      24/7, qualifica, agenda no CRM) em `lib/site-content.ts` — escrevi
+      com base no que já discutimos sobre o produto, mas confirma se bate
+      exatamente com o que o Vértice IA faz hoje.
 - [ ] Preencher os 3 números da faixa cinza (`[N]`) com dados reais —
       **não deixe números inventados**, é melhor tirar a seção do que
       mostrar estatística falsa. Se não tiver números ainda, me avisa que
       eu tiro essa seção.
-- [ ] Preencher `[PREÇO]` de cada produto (`lib/site-content.ts`) — hoje
-      só Reputação 5 Estrelas tem preço (R$ 97).
-- [ ] Configurar os links de checkout de cada produto
-      (`NEXT_PUBLIC_CHECKOUT_VERTICE_IA`, `_PERFIL_CONVERTE`, `_REPUTACAO`,
-      `_FORMATOS` — ver tabela de variáveis no README) — sem isso, o botão
-      "Quero esse" não leva a lugar nenhum.
+- [ ] Configurar `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` com o link de checkout
+      da Hubla do Vértice IA — sem isso, os botões "Quero meu SDR" não
+      levam a lugar nenhum.
 - [ ] Configurar `NEXT_PUBLIC_INSTAGRAM_URL` com o link do seu perfil.
-- [ ] Revisar as descrições curtas de cada produto em `lib/site-content.ts`
-      — escrevi um rascunho, mas ajuste pro seu tom de voz.
 
 ## 🟣 Bônus da Reputação 5 Estrelas (automação de avaliação)
 

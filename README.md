@@ -30,9 +30,11 @@ automaticamente quando alguém compra).
   usuário no Supabase Auth se ainda não existir (convite por e-mail) e
   libera/revoga o acesso ao produto
 - Página pública **`/inicio`** — landing page pra usar como link da bio do
-  Instagram (separada da VSL), com os produtos, oferta de implementação e
-  links de contato. Conteúdo com placeholders — ver
-  [`docs/pendencias.md`](./docs/pendencias.md).
+  Instagram (separada da VSL), focada só no **Vértice IA (SDR de IA)**,
+  com a oferta de implementação e links de contato. Os outros produtos
+  (Perfil que Converte, Reputação 5 Estrelas, Formatos de Criativo) são
+  order bump — só aparecem no checkout da Hubla, não nessa página.
+  Conteúdo com placeholders — ver [`docs/pendencias.md`](./docs/pendencias.md).
 
 ## Antes de começar, você vai precisar
 
@@ -140,10 +142,7 @@ cp .env.example .env.local
 | `HUBLA_WEBHOOK_TOKEN` | Gerado ao criar o webhook no painel da Hubla |
 | `NEXT_PUBLIC_SUPPORT_URL` | Link de suporte (WhatsApp, e-mail, etc.) usado no "Precisa de ajuda?" e na página `/inicio` |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Link do seu Instagram, usado no rodapé de `/inicio` |
-| `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` | Link de checkout da Hubla do produto Vértice IA |
-| `NEXT_PUBLIC_CHECKOUT_PERFIL_CONVERTE` | Link de checkout da Hubla do produto Perfil que Converte |
-| `NEXT_PUBLIC_CHECKOUT_REPUTACAO` | Link de checkout da Hubla do produto Reputação 5 Estrelas |
-| `NEXT_PUBLIC_CHECKOUT_FORMATOS` | Link de checkout da Hubla do produto Formatos de Criativo |
+| `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` | Link de checkout da Hubla do Vértice IA (SDR) |
 
 Configure as mesmas variáveis em **Vercel → Project Settings →
 Environment Variables** antes do deploy.

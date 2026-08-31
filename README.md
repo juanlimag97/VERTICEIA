@@ -50,16 +50,18 @@ npm install
 1. Crie um projeto em [supabase.com](https://supabase.com).
 2. Em **Project Settings → API**, copie a `Project URL` e a `anon public
    key` e a `service_role key`.
-3. Em **SQL Editor**, rode o conteúdo de
-   [`supabase/migrations/0001_init.sql`](./supabase/migrations/0001_init.sql)
-   e depois de
-   [`supabase/migrations/0002_product_progress.sql`](./supabase/migrations/0002_product_progress.sql),
-   nessa ordem. O primeiro cria as tabelas `profiles`, `products`,
-   `product_access`, as policies de RLS e já insere o catálogo inicial
-   (Vértice IA, Perfil que Converte, Reputação 5 Estrelas, Formatos de
-   Criativo). O segundo adiciona o progresso ("marcar como concluída") e a
-   coluna `clone_url` usada no card "Receber o projeto" da página de
-   produto.
+3. Em **SQL Editor**, rode os arquivos de `supabase/migrations/`, **nessa
+   ordem**:
+   [`0001_init.sql`](./supabase/migrations/0001_init.sql) →
+   [`0002_product_progress.sql`](./supabase/migrations/0002_product_progress.sql) →
+   [`0003_fix_profile_email_hijack.sql`](./supabase/migrations/0003_fix_profile_email_hijack.sql).
+   O primeiro cria as tabelas `profiles`, `products`, `product_access`, as
+   policies de RLS e já insere o catálogo inicial (Vértice IA, Perfil que
+   Converte, Reputação 5 Estrelas, Formatos de Criativo). O segundo
+   adiciona o progresso ("marcar como concluída") e a coluna `clone_url`
+   usada no card "Receber o projeto". O terceiro fecha uma falha de
+   segurança (ver `docs/pendencias.md`) — **importante rodar mesmo em
+   projeto já em produção**.
 4. Em **Authentication → URL Configuration**, adicione a URL do seu domínio
    (e `http://localhost:3000` em dev) em *Site URL* e em *Redirect URLs*
    adicione `<sua-url>/auth/callback`.

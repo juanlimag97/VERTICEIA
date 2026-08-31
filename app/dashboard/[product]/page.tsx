@@ -39,7 +39,7 @@ export default async function ProductPage({
     .is("revoked_at", null)
     .maybeSingle();
 
-  const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL;
+  const supportUrl = process.env.NEXT_PUBLIC_SUPPORT_URL;
 
   if (!access) {
     return (
@@ -67,19 +67,23 @@ export default async function ProductPage({
         <CompleteToggle productId={product.id} completed={!!access.completed_at} />
         <div className="flex items-center gap-1">
           <FavoriteButton productId={product.id} />
-          <a
-            href={supportEmail ? `mailto:${supportEmail}` : "#"}
-            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
-          >
-            <LifeBuoy className="h-4 w-4" />
-            Precisa de ajuda?
-          </a>
+          {supportUrl && (
+            <a
+              href={supportUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            >
+              <LifeBuoy className="h-4 w-4" />
+              Precisa de ajuda?
+            </a>
+          )}
         </div>
       </div>
 
       {product.id === "formatos-de-criativo" ? (
         <CreativeFormatsGrid />
-      ) : (
+      ) : product.clone_url ? (
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
             {product.panda_video_id ? (
@@ -93,6 +97,12 @@ export default async function ProductPage({
           <div className="lg:col-span-1">
             <CloneCard cloneUrl={product.clone_url} />
           </div>
+        </div>
+      ) : product.panda_video_id ? (
+        <VideoPlayer pandaVideoId={product.panda_video_id} />
+      ) : (
+        <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
+          Vídeo ainda não configurado para este produto.
         </div>
       )}
     </div>

@@ -21,7 +21,7 @@ export function Topbar({
           <input
             type="text"
             name="q"
-            placeholder="Buscar produtos..."
+            placeholder="Buscar..."
             className="w-full rounded-lg border border-zinc-200 bg-zinc-50 py-2 pr-3 pl-9 text-sm outline-none focus:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900"
           />
         </label>

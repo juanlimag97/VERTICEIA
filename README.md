@@ -115,7 +115,7 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_PANDA_PLAYER_BASE_URL` | Painel do Panda Video |
 | `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` | Link de checkout da Hubla |
 | `HUBLA_WEBHOOK_TOKEN` | Gerado ao criar o webhook no painel da Hubla |
-| `NEXT_PUBLIC_SUPPORT_EMAIL` | E-mail de suporte (usado no "Precisa de ajuda?") |
+| `NEXT_PUBLIC_SUPPORT_URL` | Link de suporte (WhatsApp, e-mail, etc.) usado no "Precisa de ajuda?" |
 
 Configure as mesmas variáveis em **Vercel → Project Settings →
 Environment Variables** antes do deploy.

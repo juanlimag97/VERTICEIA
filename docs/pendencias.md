@@ -57,12 +57,34 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 - [ ] Link de suporte (WhatsApp, e-mail, etc.) para `NEXT_PUBLIC_SUPPORT_URL`
       — hoje o botão "Precisa de ajuda?" fica escondido até isso ser
       configurado.
-- [ ] Confirmar **quais produtos** (Vértice IA? Perfil que Converte?
-      Reputação 5 Estrelas?) têm de fato um projeto pra "clonar" — só
-      preencher `clone_url` nesses; os demais já ficam sem esse card
-      automaticamente.
+- [ ] Confirmar se **Vértice IA** e **Perfil que Converte** também têm
+      algum projeto pra "clonar" — se não tiverem, não precisa fazer nada
+      (o card já fica escondido automaticamente). **Reputação 5 Estrelas**
+      já está resolvido (ver item de automação abaixo).
 - [ ] Trocar o "V" genérico do logo pelos arquivos reais (ícone + wordmark)
       em `public/`.
+
+## 🟣 Bônus da Reputação 5 Estrelas (automação de avaliação)
+
+- [ ] **Testar o fluxo em um n8n de verdade antes de vender** — eu montei
+      o arquivo `docs/automations/pedido-avaliacao-google.json` sem poder
+      importar num n8n real pra validar (não tenho acesso a uma instância
+      aqui). Antes de anunciar isso como bônus, importa numa conta n8n sua
+      e confirma que abre certinho — se algum bloco vier com erro, é
+      rápido de ajustar manualmente seguindo o guia.
+- [ ] Ajustar o preço do produto pra **R$ 97** direto no checkout da
+      Hubla (isso não depende de nada aqui no código/banco).
+- [ ] O card "Baixar o fluxo de automação" na página do produto já está
+      configurado — só falta confirmar que o link
+      (`clone_url` de `reputacao-5-estrelas`) está apontando pro lugar
+      certo (eu já deixei configurado, mas vale conferir depois do
+      próximo deploy).
+- [ ] **Nota:** esse arquivo fica no repositório do GitHub, que é
+      **público** — qualquer pessoa com o link consegue ver, não só quem
+      comprou. Não tem nenhum dado sensível nele (é só o fluxo genérico),
+      mas se um dia quiser deixar mais restrito, dá pra mover esse arquivo
+      pra outro lugar (ex: um Google Drive privado) — me avisa se quiser
+      isso.
 
 ## 🔵 Quando tiver o domínio próprio
 

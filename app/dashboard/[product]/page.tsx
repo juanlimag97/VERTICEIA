@@ -9,6 +9,7 @@ import { CompleteToggle } from "@/components/product/complete-toggle";
 import { FavoriteButton } from "@/components/product/favorite-button";
 import { CloneCard } from "@/components/product/clone-card";
 import { CreativeFormatsGrid } from "@/components/product/creative-formats-grid";
+import { getCloneCardCopy } from "@/lib/clone-card-config";
 
 export default async function ProductPage({
   params,
@@ -95,7 +96,7 @@ export default async function ProductPage({
             )}
           </div>
           <div className="lg:col-span-1">
-            <CloneCard cloneUrl={product.clone_url} />
+            <CloneCard cloneUrl={product.clone_url} {...getCloneCardCopy(product.id)} />
           </div>
         </div>
       ) : product.panda_video_id ? (

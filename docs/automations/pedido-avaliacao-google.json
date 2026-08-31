@@ -1,0 +1,100 @@
+{
+  "name": "Pedido de Avaliação Google — CRM finalizado",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pedido-avaliacao-google",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0001-4000-8000-000000000001",
+      "name": "Webhook - CRM finalizado",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "webhookId": "pedido-avaliacao-google"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "cond-telefone",
+              "leftValue": "={{$json.telefone}}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0002-4000-8000-000000000002",
+      "name": "Tem telefone?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "hours"
+      },
+      "id": "a1b2c3d4-0003-4000-8000-000000000003",
+      "name": "Esperar 2h",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [740, 220],
+      "webhookId": "a1b2c3d4-wait-000000000003"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.EVOLUTION_API_URL}}/message/sendText/{{$env.EVOLUTION_INSTANCE}}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{$env.EVOLUTION_API_KEY}}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{$json.telefone}}\",\n  \"text\": \"Oi {{$json.nome}}! Fico muito feliz que você confiou na gente 🙏 Se puder, deixa uma avaliação rapidinha no Google? Ajuda muito outras pessoas a nos encontrarem. Link direto: {{$env.LINK_AVALIACAO_GOOGLE}}\"\n}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0004-4000-8000-000000000004",
+      "name": "Enviar WhatsApp (Evolution API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [980, 220]
+    }
+  ],
+  "connections": {
+    "Webhook - CRM finalizado": {
+      "main": [[{ "node": "Tem telefone?", "type": "main", "index": 0 }]]
+    },
+    "Tem telefone?": {
+      "main": [
+        [{ "node": "Esperar 2h", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Esperar 2h": {
+      "main": [[{ "node": "Enviar WhatsApp (Evolution API)", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "versionId": "1",
+  "meta": { "templateCredsSetupCompleted": false }
+}

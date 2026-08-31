@@ -64,6 +64,28 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 - [ ] Trocar o "V" genérico do logo pelos arquivos reais (ícone + wordmark)
       em `public/`.
 
+## 🟠 Página `/inicio` (link da bio)
+
+Página nova em `verticeia.vercel.app/inicio` (ou `/inicio` do seu domínio,
+quando tiver). Montei com texto placeholder — revisa tudo antes de colocar
+o link na bio de verdade:
+
+- [ ] Trocar `[SEU POSICIONAMENTO AQUI]` (abaixo do header) por uma frase
+      curta de posicionamento real.
+- [ ] Preencher os 3 números da faixa cinza (`[N]`) com dados reais —
+      **não deixe números inventados**, é melhor tirar a seção do que
+      mostrar estatística falsa. Se não tiver números ainda, me avisa que
+      eu tiro essa seção.
+- [ ] Preencher `[PREÇO]` de cada produto (`lib/site-content.ts`) — hoje
+      só Reputação 5 Estrelas tem preço (R$ 97).
+- [ ] Configurar os links de checkout de cada produto
+      (`NEXT_PUBLIC_CHECKOUT_VERTICE_IA`, `_PERFIL_CONVERTE`, `_REPUTACAO`,
+      `_FORMATOS` — ver tabela de variáveis no README) — sem isso, o botão
+      "Quero esse" não leva a lugar nenhum.
+- [ ] Configurar `NEXT_PUBLIC_INSTAGRAM_URL` com o link do seu perfil.
+- [ ] Revisar as descrições curtas de cada produto em `lib/site-content.ts`
+      — escrevi um rascunho, mas ajuste pro seu tom de voz.
+
 ## 🟣 Bônus da Reputação 5 Estrelas (automação de avaliação)
 
 - [ ] **Testar o fluxo em um n8n de verdade antes de vender** — eu montei

@@ -29,6 +29,10 @@ automaticamente quando alguém compra).
 - Rota `POST /api/webhooks/hubla` que recebe os eventos da Hubla, cria o
   usuário no Supabase Auth se ainda não existir (convite por e-mail) e
   libera/revoga o acesso ao produto
+- Página pública **`/inicio`** — landing page pra usar como link da bio do
+  Instagram (separada da VSL), com os produtos, oferta de implementação e
+  links de contato. Conteúdo com placeholders — ver
+  [`docs/pendencias.md`](./docs/pendencias.md).
 
 ## Antes de começar, você vai precisar
 
@@ -134,7 +138,12 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_PANDA_PLAYER_BASE_URL` | Painel do Panda Video |
 | `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` | Link de checkout da Hubla |
 | `HUBLA_WEBHOOK_TOKEN` | Gerado ao criar o webhook no painel da Hubla |
-| `NEXT_PUBLIC_SUPPORT_URL` | Link de suporte (WhatsApp, e-mail, etc.) usado no "Precisa de ajuda?" |
+| `NEXT_PUBLIC_SUPPORT_URL` | Link de suporte (WhatsApp, e-mail, etc.) usado no "Precisa de ajuda?" e na página `/inicio` |
+| `NEXT_PUBLIC_INSTAGRAM_URL` | Link do seu Instagram, usado no rodapé de `/inicio` |
+| `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` | Link de checkout da Hubla do produto Vértice IA |
+| `NEXT_PUBLIC_CHECKOUT_PERFIL_CONVERTE` | Link de checkout da Hubla do produto Perfil que Converte |
+| `NEXT_PUBLIC_CHECKOUT_REPUTACAO` | Link de checkout da Hubla do produto Reputação 5 Estrelas |
+| `NEXT_PUBLIC_CHECKOUT_FORMATOS` | Link de checkout da Hubla do produto Formatos de Criativo |
 
 Configure as mesmas variáveis em **Vercel → Project Settings →
 Environment Variables** antes do deploy.

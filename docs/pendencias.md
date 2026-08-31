@@ -86,6 +86,22 @@ antes de colocar o link na bio de verdade:
       levam a lugar nenhum.
 - [ ] Configurar `NEXT_PUBLIC_INSTAGRAM_URL` com o link do seu perfil.
 
+## 🟤 Página `/obrigado` (pós-compra)
+
+Página nova de "compra aprovada", inspirada na do ibe.IA, com a nossa
+paleta. Falta:
+
+- [ ] **Configurar na Hubla** o redirect pós-checkout do Vértice IA pra
+      `https://verticeia.vercel.app/obrigado` (ou pro seu domínio, quando
+      tiver) — isso se configura direto no produto, dentro do painel da
+      Hubla.
+- [ ] Configurar `NEXT_PUBLIC_WHATSAPP_GROUP_URL` com o link do grupo de
+      avisos — se vocês tiverem um grupo assim. Se não tiver, não precisa
+      fazer nada, esse passo já fica escondido sozinho.
+- [ ] `NEXT_PUBLIC_SUPPORT_URL` e `NEXT_PUBLIC_INSTAGRAM_URL` (mesmas do
+      `/inicio`) também são usados aqui — configurando uma vez, vale pras
+      duas páginas.
+
 ## 🟣 Bônus da Reputação 5 Estrelas (automação de avaliação)
 
 - [ ] **Testar o fluxo em um n8n de verdade antes de vender** — eu montei

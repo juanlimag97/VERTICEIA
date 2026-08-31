@@ -35,6 +35,9 @@ automaticamente quando alguém compra).
   (Perfil que Converte, Reputação 5 Estrelas, Formatos de Criativo) são
   order bump — só aparecem no checkout da Hubla, não nessa página.
   Conteúdo com placeholders — ver [`docs/pendencias.md`](./docs/pendencias.md).
+- Página pública **`/obrigado`** — página de "compra aprovada" pra
+  configurar como redirect pós-checkout na Hubla, com os próximos passos
+  (acessar a conta, entrar no grupo do WhatsApp, suporte).
 
 ## Antes de começar, você vai precisar
 
@@ -143,6 +146,7 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_SUPPORT_URL` | Link de suporte (WhatsApp, e-mail, etc.) usado no "Precisa de ajuda?" e na página `/inicio` |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Link do seu Instagram, usado no rodapé de `/inicio` |
 | `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` | Link de checkout da Hubla do Vértice IA (SDR) |
+| `NEXT_PUBLIC_WHATSAPP_GROUP_URL` | Link do grupo de avisos no WhatsApp, usado em `/obrigado` |
 
 Configure as mesmas variáveis em **Vercel → Project Settings →
 Environment Variables** antes do deploy.

@@ -38,13 +38,6 @@ automaticamente quando alguém compra).
 - Página pública **`/obrigado`** — página de "compra aprovada" pra
   configurar como redirect pós-checkout na Hubla, com os próximos passos
   (acessar a conta, entrar no grupo do WhatsApp, suporte).
-- Página pública **`/corinthians`** — jogo "Missão Permanência": o jogador
-  escala até 3 lendas do Corinthians (uma por setor: defesa, meio e ataque)
-  no lugar dos titulares e simula, jogo a jogo, as rodadas 31 a 38 do
-  Brasileirão. A cada rodada surgem lendas diferentes. Cenário fictício e
-  com final fixo: não importa a escalação, o Corinthians sempre termina no
-  Z4 (a regra fica em `lib/corinthians/engine.ts`, função `fateAllows`).
-  Elenco, overalls, tabela e calendário ficam em `lib/corinthians/data.ts`.
 
 ## Antes de começar, você vai precisar
 

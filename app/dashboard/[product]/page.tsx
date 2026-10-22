@@ -87,8 +87,8 @@ export default async function ProductPage({
       ) : product.clone_url ? (
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            {product.panda_video_id ? (
-              <VideoPlayer pandaVideoId={product.panda_video_id} />
+            {product.video_key ? (
+              <VideoPlayer productId={product.id} />
             ) : (
               <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
                 Vídeo ainda não configurado para este produto.
@@ -99,8 +99,8 @@ export default async function ProductPage({
             <CloneCard cloneUrl={product.clone_url} {...getCloneCardCopy(product.id)} />
           </div>
         </div>
-      ) : product.panda_video_id ? (
-        <VideoPlayer pandaVideoId={product.panda_video_id} />
+      ) : product.video_key ? (
+        <VideoPlayer productId={product.id} />
       ) : (
         <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
           Vídeo ainda não configurado para este produto.

@@ -32,6 +32,7 @@ export type Database = {
           name: string;
           description: string | null;
           panda_video_id: string | null;
+          video_key: string | null;
           hubla_product_id: string | null;
           clone_url: string | null;
           sort_order: number;
@@ -42,6 +43,7 @@ export type Database = {
           name: string;
           description?: string | null;
           panda_video_id?: string | null;
+          video_key?: string | null;
           hubla_product_id?: string | null;
           clone_url?: string | null;
           sort_order?: number;
@@ -52,6 +54,7 @@ export type Database = {
           name?: string;
           description?: string | null;
           panda_video_id?: string | null;
+          video_key?: string | null;
           hubla_product_id?: string | null;
           clone_url?: string | null;
           sort_order?: number;

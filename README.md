@@ -1,15 +1,18 @@
 # Vértice IA — Área de Membros
 
 Dashboard de membros construída com Next.js (App Router) + Supabase (auth e
-banco) + Panda Video (player embedado) + webhook da Hubla (libera acesso
-automaticamente quando alguém compra).
+banco) + Cloudflare R2 (vídeos, com player próprio) + webhook da Hubla
+(libera acesso automaticamente quando alguém compra).
 
 ## Stack
 
 - **Next.js + Vercel** — app e deploy
 - **Supabase** — autenticação (e-mail e senha) e banco de dados (quem
   comprou o quê)
-- **Panda Video** — hospedagem e player dos vídeos
+- **Cloudflare R2 + Video.js** — hospedagem gratuita dos vídeos (sem custo
+  de banda de saída) com player customizado, servido via URL assinada e
+  temporária (gerada em `app/api/video-url/route.ts`, só para quem tem
+  acesso ao produto)
 - **Webhook da Hubla** — dispara `customer.member_added` /
   `customer.member_removed` quando alguém compra ou perde acesso, e o app
   cria/revoga o acesso no Supabase automaticamente
@@ -24,7 +27,8 @@ automaticamente quando alguém compra).
 - Rotas `/dashboard/*` protegidas por middleware (`proxy.ts`)
 - Tela de boas-vindas personalizada ("Fulano, bem-vindo") com cards de
   acesso por produto (bloqueados visualmente se o usuário não tem acesso)
-- Página de produto com o player do Panda Video embedado
+- Página de produto com player de vídeo próprio (Cloudflare R2 + Video.js,
+  URL assinada e temporária)
 - Card de destaque para a **Implementação (R$ 1.500)** com botão de checkout
 - Rota `POST /api/webhooks/hubla` que recebe os eventos da Hubla, cria o
   usuário no Supabase Auth se ainda não existir (convite por e-mail) e
@@ -42,7 +46,8 @@ automaticamente quando alguém compra).
 ## Antes de começar, você vai precisar
 
 1. Conta no [Supabase](https://supabase.com) (plano gratuito é suficiente)
-2. Conta no Panda Video com os vídeos enviados (ou pelo menos um de teste)
+2. Conta na [Cloudflare](https://dash.cloudflare.com) com um bucket R2
+   criado e os vídeos enviados (ou pelo menos um de teste)
 3. Acesso à configuração de webhook da Hubla
 4. Os arquivos de logo (ícone + wordmark) — coloque em `public/`
 
@@ -91,16 +96,26 @@ npm install
      configurado, o Supabase continua enviando pelo remetente padrão dele
      — o conteúdo do e-mail (item acima) já fica personalizado mesmo assim.
 
-### 3. Configurar o Panda Video
+### 3. Configurar o Cloudflare R2 (vídeos)
 
-1. Envie os vídeos de cada produto no Panda Video.
-2. Em **Configurações do player**, restrinja o embed por domínio (adicione
-   o domínio do Vercel e `localhost` para testes).
-3. Pegue a URL base do seu player, algo como
-   `https://player-vz-XXXXXXXX-XXX.tv.pandavideo.com.br`, e coloque em
-   `NEXT_PUBLIC_PANDA_PLAYER_BASE_URL`.
-4. No Supabase, na tabela `products`, preencha a coluna `panda_video_id` de
-   cada produto com o id do vídeo correspondente no Panda Video.
+1. Crie uma conta gratuita na [Cloudflare](https://dash.cloudflare.com) e,
+   no menu **R2**, crie um bucket (ex: `verticeia-videos`).
+2. Em **R2 → Manage R2 API Tokens**, crie um token com permissão de
+   leitura/escrita só nesse bucket. Guarde o **Access Key ID** e a
+   **Secret Access Key** gerados.
+3. Preencha nas variáveis de ambiente: `R2_ACCOUNT_ID` (aparece na própria
+   tela do R2), `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` e
+   `R2_BUCKET_NAME`.
+4. Suba os vídeos de cada produto pro bucket (pelo painel da Cloudflare ou
+   por um cliente S3 qualquer).
+5. No Supabase, na tabela `products`, preencha a coluna `video_key` de cada
+   produto com o caminho do arquivo dentro do bucket (ex:
+   `vertice-ia/aula-1.mp4`).
+
+O player (`components/video-player.tsx`) busca uma URL assinada e
+temporária (válida por 2h) na rota `app/api/video-url/route.ts` — essa
+rota confere se o usuário logado realmente tem acesso ao produto antes de
+liberar a URL, então o vídeo nunca fica num link público fixo.
 
 ### 4. Configurar o webhook da Hubla
 
@@ -140,7 +155,7 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API (**secreta**, só no servidor) |
-| `NEXT_PUBLIC_PANDA_PLAYER_BASE_URL` | Painel do Panda Video |
+| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_BUCKET_NAME` | Cloudflare → R2 → Manage R2 API Tokens |
 | `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` | Link de checkout da Hubla |
 | `HUBLA_WEBHOOK_TOKEN` | Gerado ao criar o webhook no painel da Hubla |
 | `NEXT_PUBLIC_SUPPORT_URL` | Link de suporte (WhatsApp, e-mail, etc.) usado no "Precisa de ajuda?" e na página `/inicio` |
@@ -170,8 +185,9 @@ app/
   dashboard/
     layout.tsx              header + guarda de sessão
     page.tsx                boas-vindas + grid de produtos + upsell
-    [product]/page.tsx       player do Panda Video, checa acesso
+    [product]/page.tsx       player de vídeo (R2), checa acesso
   api/webhooks/hubla/       recebe eventos da Hubla e libera/revoga acesso
+  api/video-url/            gera URL assinada do vídeo (R2), checando acesso
 lib/supabase/
   client.ts / server.ts     clients do Supabase (browser / server components)
   admin.ts                  client com service role (só usado no webhook)
@@ -188,6 +204,6 @@ proxy.ts                    protege /dashboard/* e redireciona quem já logou
 - Assim que tiver o domínio: configurar SMTP próprio no Supabase (ver seção
   6 do setup) pros e-mails de convite/redefinição de senha chegarem com o
   remetente da marca.
-- Hoje o mapeamento de produto (`hubla_product_id`) e vídeo
-  (`panda_video_id`) é feito direto na tabela `products` pelo SQL Editor do
-  Supabase; se o catálogo crescer muito, vale montar uma telinha de admin.
+- Hoje o mapeamento de produto (`hubla_product_id`) e vídeo (`video_key`) é
+  feito direto na tabela `products` pelo SQL Editor do Supabase; se o
+  catálogo crescer muito, vale montar uma telinha de admin.

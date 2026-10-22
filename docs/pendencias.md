@@ -40,8 +40,12 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 - [ ] Adicionar `NEXT_PUBLIC_SITE_URL` (ex: `https://verticeia.vercel.app`)
       nas variáveis de ambiente da Vercel — usado pelo link do e-mail de
       convite.
-- [ ] **Panda Video**: preencher `NEXT_PUBLIC_PANDA_PLAYER_BASE_URL` e o
-      `panda_video_id` de cada produto na tabela `products` do Supabase.
+- [ ] **Cloudflare R2** (trocamos o Panda Video por isso — gratuito, sem
+      custo de banda): criar bucket, gerar token de API, preencher
+      `R2_ACCOUNT_ID`/`R2_ACCESS_KEY_ID`/`R2_SECRET_ACCESS_KEY`/
+      `R2_BUCKET_NAME` na Vercel, subir os vídeos pro bucket e preencher
+      `video_key` de cada produto na tabela `products` do Supabase. Passo a
+      passo completo no README, seção "3. Configurar o Cloudflare R2".
 - [ ] **Hubla**: criar o webhook apontando pra
       `/api/webhooks/hubla`, selecionar os eventos
       `customer.member_added`/`customer.member_removed`, e preencher o

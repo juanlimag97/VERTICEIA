@@ -3,16 +3,16 @@
 Checklist vivo. Toda vez que aparecer algo novo que depende de você (não de
 código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 
-## 🔴 Segurança — urgente
+## 🔴 Segurança — urgente ✅ concluído
 
-- [ ] **Rodar a migration `0003_fix_profile_email_hijack.sql`** no SQL
+- [x] **Rodar a migration `0003_fix_profile_email_hijack.sql`** no SQL
       Editor do Supabase. Corrige uma falha real: qualquer usuário logado
       conseguia trocar o próprio `profiles.email` para o e-mail de outro
       cliente. Como o webhook da Hubla decide quem recebe acesso buscando
       por esse e-mail, um usuário mal-intencionado podia "roubar" o acesso
       de uma compra futura de outra pessoa. Detalhes no comentário do
       próprio arquivo SQL.
-- [ ] **Verificar se o cadastro público está desativado no Supabase.** Vá
+- [x] **Verificar se o cadastro público está desativado no Supabase.** Vá
       em Supabase → Authentication → Sign In / Providers (ou
       "Authentication → Settings", dependendo da versão do painel) e
       procure a opção **"Allow new users to sign up"** (permitir que
@@ -25,13 +25,13 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
       vem do webhook da Hubla), mas evita contas fantasma / spam. Desativar
       não afeta o fluxo de convite (ele usa a service role, que ignora essa
       trava).
-- [ ] **Rotacionar a `service_role key`** do Supabase (Project Settings →
+- [x] **Rotacionar a `service_role key`** do Supabase (Project Settings →
       API → gerar nova) e atualizar na Vercel — essa chave apareceu em
       texto nesta conversa em algum momento, então tecnicamente não é mais
       100% secreta.
-- [ ] **Trocar (ou desativar) a senha de teste** `Vertice2026!Temp` da sua
+- [x] **Trocar (ou desativar) a senha de teste** `Vertice2026!Temp` da sua
       conta (`juaanlimaa@gmail.com`) — também foi exposta na conversa.
-- [ ] Confirmar que `SUPABASE_SERVICE_ROLE_KEY` e `HUBLA_WEBHOOK_TOKEN`
+- [x] Confirmar que `SUPABASE_SERVICE_ROLE_KEY` e `HUBLA_WEBHOOK_TOKEN`
       estão marcados como **"Secret"** (não "Config") nas variáveis de
       ambiente da Vercel.
 

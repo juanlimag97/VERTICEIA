@@ -37,19 +37,27 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 
 ## 🟡 Configuração — sem isso, partes do site não funcionam
 
-- [ ] Adicionar `NEXT_PUBLIC_SITE_URL` (ex: `https://verticeia.vercel.app`)
-      nas variáveis de ambiente da Vercel — usado pelo link do e-mail de
-      convite.
+- [x] `NEXT_PUBLIC_SITE_URL` configurado com `https://attendio.com.br`.
 - [ ] **Cloudflare R2** (trocamos o Panda Video por isso — gratuito, sem
       custo de banda): criar bucket, gerar token de API, preencher
       `R2_ACCOUNT_ID`/`R2_ACCESS_KEY_ID`/`R2_SECRET_ACCESS_KEY`/
       `R2_BUCKET_NAME` na Vercel, subir os vídeos pro bucket e preencher
       `video_key` de cada produto na tabela `products` do Supabase. Passo a
       passo completo no README, seção "3. Configurar o Cloudflare R2".
-- [ ] **Hubla**: criar o webhook apontando pra
-      `/api/webhooks/hubla`, selecionar os eventos
-      `customer.member_added`/`customer.member_removed`, e preencher o
-      `hubla_product_id` de cada produto na tabela `products`.
+- [x] **Hubla**: webhook criado apontando pra `/api/webhooks/hubla`,
+      token configurado e testado (200 OK confirmado). O evento que
+      libera acesso de verdade é `invoice.payment_succeeded` (não
+      `customer.member_added` como eu tinha assumido no início — vendas
+      avulsas na Hubla disparam esse), já ajustado no código.
+- [ ] **Migration `0007_hubla_product_mapping.sql`**: roda no SQL
+      Editor do Supabase — mapeia o Attendio IA pro id real confirmado no
+      teste. Os outros produtos ("Em breve") ainda não têm
+      `hubla_product_id` preenchido — só precisa quando forem lançados.
+- [ ] **Falta confirmar o evento de reembolso/estorno** pra revogar
+      acesso automaticamente quando alguém pede reembolso — ainda não
+      sei o nome exato desse evento na Hubla. Quando você testar um
+      reembolso (ou achar a lista completa de eventos no painel deles),
+      me manda o payload que eu reviso o código do webhook.
 - [ ] `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` — link de checkout da
       Implementação (R$ 1.500).
 - [ ] Colar os templates de e-mail (convite + redefinição de senha) no

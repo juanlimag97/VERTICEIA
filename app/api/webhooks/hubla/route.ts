@@ -4,15 +4,22 @@ import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 // Documentação: https://hubla.gitbook.io/docs/webhooks
-// Eventos tratados: customer.member_added / customer.member_removed
-// (disparados quando um comprador ganha/perde acesso a um produto — é
-// exatamente o gatilho certo para liberar/revogar a área de membros).
+//
+// Eventos que liberam acesso: `customer.member_added` (áreas de
+// assinatura/comunidade) e `invoice.payment_succeeded` (vendas avulsas,
+// tipo "sell" — é o que a Attendio IA realmente dispara, confirmado com
+// um teste real no sandbox da Hubla). Evento que revoga: apenas
+// `customer.member_removed` por enquanto — ainda falta confirmar qual
+// evento a Hubla dispara em reembolso/estorno pra revogar nesses casos.
 //
 // Autenticação: a Hubla envia o token configurado no painel dela no header
 // `x-hubla-token`. Compare com HUBLA_WEBHOOK_TOKEN (variável de ambiente).
 
+const GRANT_EVENT_TYPES = ["customer.member_added", "invoice.payment_succeeded"] as const;
+const REVOKE_EVENT_TYPES = ["customer.member_removed"] as const;
+
 const hublaEventSchema = z.object({
-  type: z.enum(["customer.member_added", "customer.member_removed"]),
+  type: z.enum([...GRANT_EVENT_TYPES, ...REVOKE_EVENT_TYPES]),
   version: z.string().optional(),
   event: z.object({
     user: z.object({
@@ -24,6 +31,11 @@ const hublaEventSchema = z.object({
       id: z.string(),
       name: z.string().optional(),
     }),
+    invoice: z
+      .object({
+        status: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 
@@ -81,12 +93,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "unmapped_product" }, { status: 404 });
   }
 
+  if (
+    type === "invoice.payment_succeeded" &&
+    event.invoice?.status &&
+    event.invoice.status !== "paid"
+  ) {
+    // Defensivo: só processa payment_succeeded se a fatura realmente
+    // estiver paga (quando esse campo vem no payload).
+    return NextResponse.json({ ignored: true });
+  }
+
   const profileId = await getOrCreateProfileId(supabase, event.user.email, fullName);
   if (!profileId) {
     return NextResponse.json({ error: "internal_error" }, { status: 500 });
   }
 
-  if (type === "customer.member_added") {
+  if ((GRANT_EVENT_TYPES as readonly string[]).includes(type)) {
     const { error } = await supabase.from("product_access").upsert(
       {
         profile_id: profileId,

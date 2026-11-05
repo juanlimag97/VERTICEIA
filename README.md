@@ -29,7 +29,7 @@ banco) + Cloudflare R2 (vídeos, com player próprio) + webhook da Hubla
   acesso por produto (bloqueados visualmente se o usuário não tem acesso)
 - Página de produto com player de vídeo próprio (Cloudflare R2 + Video.js,
   URL assinada e temporária)
-- Card de destaque para a **Implementação (R$ 1.500)** com botão de checkout
+- Card de destaque para a **Implementação (R$ 1.000)** com botão de checkout
 - Rota `POST /api/webhooks/hubla` que recebe os eventos da Hubla, cria o
   usuário no Supabase Auth se ainda não existir (convite por e-mail) e
   libera/revoga o acesso ao produto
@@ -133,7 +133,7 @@ liberar a URL, então o vídeo nunca fica num link público fixo.
    essa coluna para descobrir a qual produto do seu catálogo o evento se
    refere — sem isso, o webhook responde `404 unmapped_product` e loga o id
    recebido no console, para você conseguir preencher certo).
-5. Para o card de "Implementação (R$ 1.500)", pegue o link de checkout
+5. Para o card de "Implementação (R$ 1.000)", pegue o link de checkout
    desse produto na Hubla e coloque em
    `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL`.
 6. Se algum produto tiver um projeto pra "clonar" (ex: um projeto Lovable
@@ -143,7 +143,7 @@ liberar a URL, então o vídeo nunca fica num link público fixo.
 
 ### 4.1 E-mail de agendamento da Implementação
 
-A Implementação (R$ 1.500) não é um produto da área de membros — é um
+A Implementação (R$ 1.000) não é um produto da área de membros — é um
 serviço avulso. Quando alguém compra, em vez de liberar acesso no
 dashboard, o webhook manda um e-mail com o link do Calendly pra marcar a
 call. Isso precisa de duas coisas a mais:

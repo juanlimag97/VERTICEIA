@@ -96,7 +96,7 @@ mesma estrutura, copy e animação do WhatsApp de antes.
 - [x] Evento de reembolso confirmado (`invoice.refunded`) e já
       tratado no código — revoga o acesso automaticamente.
 - [ ] `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` — link de checkout da
-      Implementação (R$ 1.500).
+      Implementação (R$ 1.000).
 - [ ] **E-mail de agendamento da call de Implementação**: criei a lógica
       (quando alguém compra a Implementação, manda um e-mail com o link do
       Calendly em vez de liberar acesso no dashboard). Falta configurar 3

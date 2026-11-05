@@ -18,7 +18,7 @@ export function ImplementacaoUpsellCard() {
               Implementação com a equipe
             </h3>
             <p className="mt-1 max-w-md text-sm text-cinza-texto">
-              A gente implementa tudo pra você, do zero. R$ 1.500.
+              A gente implementa tudo pra você, do zero. R$ 1.000.
             </p>
           </div>
         </div>

@@ -117,13 +117,10 @@ mesma estrutura, copy e animação do WhatsApp de antes.
 - [ ] Link de suporte (WhatsApp, e-mail, etc.) para `NEXT_PUBLIC_SUPPORT_URL`
       — hoje o botão "Precisa de ajuda?" fica escondido até isso ser
       configurado.
-- [ ] **Link real do projeto Lovable do Attendio IA**: rodei a migration
-      `0009_implementacao_clone_url.sql` (SQL Editor do Supabase) com um
-      placeholder (`#`) só pra já aparecer o card "Receber o projeto no
-      Lovable" na página do produto, com o botão. Quando tiver o link de
-      remix de verdade, troca direto no Supabase → Table Editor →
-      `products` → linha `vertice-ia` → coluna `clone_url` (não precisa de
-      migration nova nem de deploy, é só editar a célula).
+- [ ] **Link real do projeto Lovable do Attendio IA**: já configurado —
+      migration `0010_attendio_ia_clone_url.sql` troca o placeholder da
+      `0009` pelo link de remix real que você mandou. Só rodar no SQL
+      Editor do Supabase.
 - [ ] Confirmar se **Perfil que Converte** também vai ter um projeto pra
       "clonar" quando lançar — se não tiver, não precisa fazer nada (o
       card já fica escondido automaticamente). **Reputação 5 Estrelas**

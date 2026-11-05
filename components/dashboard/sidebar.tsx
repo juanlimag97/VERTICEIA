@@ -19,7 +19,7 @@ export function Sidebar({ products }: { products: NavProduct[] }) {
     <aside className="hidden w-64 shrink-0 flex-col border-r border-white/5 bg-tinta text-zinc-300 lg:flex">
       <div className="flex h-16 items-center px-6">
         <Link href="/dashboard">
-          <Logo variant="dark-surface" className="text-[13px]" />
+          <Logo variant="dark-surface" className="text-lg" />
         </Link>
       </div>
 

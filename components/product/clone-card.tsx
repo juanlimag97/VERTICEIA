@@ -22,7 +22,7 @@ export function CloneCard({
           {platformTag}
         </p>
         <h3 className="mt-2 text-lg font-semibold">
-          Este projeto já é <em className="not-italic text-indigo-accent">seu</em>.
+          Este projeto já é <em className="not-italic text-volt-escuro dark:text-volt">seu</em>.
         </h3>
         <p className="mt-3 text-sm text-cinza-texto">
           {description}

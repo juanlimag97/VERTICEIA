@@ -1,4 +1,5 @@
--- Rebrand: "Vértice IA" agora se chama "Attendio".
+-- Rebrand: "Vértice IA" agora se chama "Attendio IA" (produto principal
+-- da marca Attendio).
 --
 -- O slug/id técnico do produto ('vertice-ia') continua o mesmo de
 -- propósito — ele é referenciado por product_access.product_id (chave
@@ -7,5 +8,5 @@
 -- é o que realmente importa pro usuário final.
 
 update public.products
-set name = 'Attendio'
+set name = 'Attendio IA'
 where id = 'vertice-ia';

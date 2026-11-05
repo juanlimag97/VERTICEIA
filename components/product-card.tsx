@@ -25,7 +25,7 @@ export function ProductCard({
         <span
           className={`flex h-11 w-11 items-center justify-center rounded-xl ${
             unlocked
-              ? "bg-indigo-accent/10 text-indigo-accent"
+              ? "bg-volt/15 text-volt-escuro dark:bg-volt/10 dark:text-volt"
               : "bg-zinc-200 text-zinc-400 dark:bg-white/5 dark:text-zinc-600"
           }`}
         >
@@ -46,7 +46,7 @@ export function ProductCard({
       <p
         className={`flex items-center gap-1 text-sm font-medium ${
           unlocked
-            ? "text-indigo-accent"
+            ? "text-volt-escuro dark:text-volt"
             : "text-zinc-400 dark:text-zinc-600"
         }`}
       >

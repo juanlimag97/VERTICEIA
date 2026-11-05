@@ -6,7 +6,6 @@
   --nevoa: #f4f3ee;
   --volt: #c8f23c;
   --volt-escuro: #8db800;
-  --indigo-accent: #3b47e0;
   --cinza-texto: #5c6472;
 
   --background: var(--nevoa);
@@ -19,7 +18,6 @@
   --color-nevoa: var(--nevoa);
   --color-volt: var(--volt);
   --color-volt-escuro: var(--volt-escuro);
-  --color-indigo-accent: var(--indigo-accent);
   --color-cinza-texto: var(--cinza-texto);
   --color-background: var(--background);
   --color-foreground: var(--foreground);

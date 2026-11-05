@@ -70,7 +70,7 @@ npm install
    [`0002_product_progress.sql`](./supabase/migrations/0002_product_progress.sql) →
    [`0003_fix_profile_email_hijack.sql`](./supabase/migrations/0003_fix_profile_email_hijack.sql).
    O primeiro cria as tabelas `profiles`, `products`, `product_access`, as
-   policies de RLS e já insere o catálogo inicial (Attendio, Perfil que
+   policies de RLS e já insere o catálogo inicial (Attendio IA, Perfil que
    Converte, Reputação 5 Estrelas, Formatos de Criativo). O segundo
    adiciona o progresso ("marcar como concluída") e a coluna `clone_url`
    usada no card "Receber o projeto". O terceiro fecha uma falha de

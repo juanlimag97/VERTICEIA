@@ -125,7 +125,7 @@ function ProductHeader({
         Voltar
       </Link>
       <div className="mt-3 flex items-center gap-3">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-accent/10 text-indigo-accent">
+        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-volt/15 text-volt-escuro dark:bg-volt/10 dark:text-volt">
           <ProductIcon productId={product.id} className="h-5 w-5" />
         </span>
         <h1 className="text-2xl font-semibold tracking-tight">

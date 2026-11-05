@@ -63,7 +63,7 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 - [ ] Link de suporte (WhatsApp, e-mail, etc.) para `NEXT_PUBLIC_SUPPORT_URL`
       — hoje o botão "Precisa de ajuda?" fica escondido até isso ser
       configurado.
-- [ ] Confirmar se **Attendio** e **Perfil que Converte** também têm
+- [ ] Confirmar se **Attendio IA** e **Perfil que Converte** também têm
       algum projeto pra "clonar" — se não tiverem, não precisa fazer nada
       (o card já fica escondido automaticamente). **Reputação 5 Estrelas**
       já está resolvido (ver item de automação abaixo).
@@ -138,9 +138,11 @@ ações que não dependem de código:
 
 - [ ] **Migration `0005_rebrand_attendio.sql`**: roda no SQL Editor do
       Supabase — atualiza o nome exibido do produto de "Vértice IA" para
-      "Attendio" na tabela `products` (o `id`/slug técnico continua
+      "Attendio IA" na tabela `products` (o `id`/slug técnico continua
       `vertice-ia`, não mexi nisso para não quebrar os acessos já
-      concedidos).
+      concedidos). **Enquanto não rodar essa migration, "Vértice IA"
+      continua aparecendo no dashboard** — isso é dado do banco, não do
+      código.
 - [ ] O **e-mail de convite/redefinição de senha** (`docs/email-templates.md`)
       ainda está com o texto antigo "Vértice IA" — reescrevi o arquivo com
       "Attendio", só falta colar de novo no Supabase (Authentication → Email

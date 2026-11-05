@@ -43,7 +43,7 @@ export default function ObrigadoPage() {
   return (
     <div className="min-h-screen overflow-hidden bg-nevoa dark:bg-tinta">
       <header className="flex h-16 items-center px-6 lg:px-10">
-        <Logo className="text-xs" />
+        <Logo className="text-xl" />
       </header>
 
       <main className="relative mx-auto flex max-w-2xl flex-col items-center gap-4 px-6 pt-10 pb-20 text-center">
@@ -67,7 +67,7 @@ export default function ObrigadoPage() {
               className="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 sm:flex-row sm:items-center dark:border-white/10 dark:bg-grafite"
             >
               <div className="flex items-center gap-4 sm:flex-1">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-accent/10 text-indigo-accent">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt/15 text-volt-escuro dark:bg-volt/10 dark:text-volt">
                   <step.icon className="h-5 w-5" />
                 </span>
                 <div>
@@ -106,7 +106,7 @@ export default function ObrigadoPage() {
       </main>
 
       <footer className="border-t border-zinc-100 bg-white px-6 py-12 text-center dark:border-white/5 dark:bg-grafite/40">
-        <Logo className="justify-center text-xs" />
+        <Logo className="justify-center text-xl" />
         <p className="mx-auto mt-3 max-w-sm text-sm text-cinza-texto">
           SDR de IA integrado ao seu CRM — atende, qualifica e agenda
           reuniões automaticamente.

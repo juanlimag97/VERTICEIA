@@ -19,7 +19,7 @@ export default function InicioPage() {
     <div className="min-h-screen bg-nevoa dark:bg-tinta">
       {/* Header */}
       <header className="flex h-16 items-center justify-between px-6 lg:px-10">
-        <Logo className="text-xs" />
+        <Logo className="text-xl" />
         <a
           href={checkoutUrl}
           target="_blank"
@@ -36,7 +36,7 @@ export default function InicioPage() {
           <span className="h-2 w-2 rounded-full bg-volt" />
           Online 24/7
         </span>
-        <p className="label-mono text-xs text-indigo-accent">
+        <p className="label-mono text-xs text-volt-escuro dark:text-volt">
           Seu atendente que nunca dorme
         </p>
         <h1 className="text-4xl text-balance sm:text-5xl">
@@ -71,7 +71,7 @@ export default function InicioPage() {
         </div>
         <p className="text-sm text-cinza-texto">
           Já é aluno?{" "}
-          <Link href="/login" className="font-medium text-indigo-accent hover:opacity-80">
+          <Link href="/login" className="font-medium text-volt-escuro hover:opacity-80 dark:text-volt">
             Entrar na área de membros
           </Link>
         </p>
@@ -93,7 +93,7 @@ export default function InicioPage() {
                 key={feature.title}
                 className="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-white/10 dark:bg-grafite"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-accent/10 text-indigo-accent">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-volt/15 text-volt-escuro dark:bg-volt/10 dark:text-volt">
                   <Icon className="h-5 w-5" />
                 </span>
                 <h3 className="font-semibold">{feature.title}</h3>
@@ -147,7 +147,7 @@ export default function InicioPage() {
 
       {/* Footer */}
       <footer className="border-t border-zinc-100 px-6 py-10 text-center dark:border-white/5">
-        <Logo className="justify-center text-xs" />
+        <Logo className="justify-center text-xl" />
         <div className="mt-4 flex items-center justify-center gap-4 text-cinza-texto">
           <a
             href={instagramUrl}

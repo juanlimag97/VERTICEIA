@@ -49,19 +49,17 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
       libera acesso de verdade é `invoice.payment_succeeded` (não
       `customer.member_added` como eu tinha assumido no início — vendas
       avulsas na Hubla disparam esse), já ajustado no código.
-- [ ] **Migration `0007_hubla_product_mapping.sql`**: roda no SQL
-      Editor do Supabase — mapeia o Attendio IA pro id real confirmado no
-      teste. Os outros produtos ("Em breve") ainda não têm
-      `hubla_product_id` preenchido — só precisa quando forem lançados.
+- [ ] **Migrations `0007` e `0008`**: roda no SQL Editor do Supabase —
+      mapeiam o Attendio IA e o Formatos de Criativo (order bump) pros
+      ids reais confirmados nos testes. Perfil que Converte/Reputação 5
+      Estrelas ("Em breve") ainda não têm `hubla_product_id` — só
+      precisa quando forem lançados.
 - [x] Evento de reembolso confirmado (`invoice.refunded`) e já
       tratado no código — revoga o acesso automaticamente.
 - [ ] `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` — link de checkout da
       Implementação (R$ 1.500).
-- [ ] Colar os templates de e-mail (convite + redefinição de senha) no
-      Supabase — texto pronto em
-      [`docs/email-templates.md`](./email-templates.md). **Atualizei o
-      visual** (saudação pelo nome, box de acesso, passos numerados) —
-      se você já tinha colado a versão antiga, precisa colar de novo.
+- [x] Templates de e-mail (convite + redefinição de senha) colados no
+      Supabase, já com a identidade da Attendio.
 
 ## 🟢 Decisões de conteúdo
 

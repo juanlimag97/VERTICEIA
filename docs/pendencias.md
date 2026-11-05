@@ -9,9 +9,8 @@ Reconstruí a VSL que estava num projeto separado (`vsl-vertice-ia.vercel.app`)
 como `/vsl` dentro deste mesmo app, já com a identidade da Attendio —
 mesma estrutura, copy e animação do WhatsApp de antes.
 
-- [ ] Preencher o **Player ID e o Token da VTurb** de verdade em
-      `app/vsl/vsl-content.tsx` (procure por `SEU_PLAYER_ID_AQUI` e
-      `SEU_TOKEN_AQUI`) — sem isso o player mostra "Video not found".
+- [x] Player ID e Token da VTurb já preenchidos em
+      `app/vsl/vsl-content.tsx` com o embed real.
 - [ ] Preencher o **Pixel ID da UTMify** de verdade (procure por
       `SEU_PIXEL_ID_AQUI` no mesmo arquivo).
 - [ ] Configurar o subdomínio `vsl.attendio.com.br` apontando pra essa

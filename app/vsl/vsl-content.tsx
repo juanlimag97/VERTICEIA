@@ -90,22 +90,33 @@ export function VslContent() {
     };
   }, []);
 
-  // Player VTurb — injeta o elemento customizado + script deles, do jeito
-  // que a VTurb pede. Troque PLAYER_ID e TOKEN pelos valores reais.
+  // Player VTurb — injeta o elemento customizado + script deles, exatamente
+  // como no embed fornecido pela VTurb (id prefixado "vid-", placeholder
+  // interno com aspect-ratio próprio, e o script na rota /v4/).
   useEffect(() => {
-    const PLAYER_ID = "SEU_PLAYER_ID_AQUI";
-    const TOKEN = "SEU_TOKEN_AQUI";
+    const PLAYER_ID = "6aecec06b705df97e6574331";
+    const TOKEN = "b639b32a-d7d7-4939-90a6-b87dc343b73d";
 
     const player = document.createElement("vturb-smartplayer");
-    player.id = PLAYER_ID;
+    player.id = `vid-${PLAYER_ID}`;
     player.style.display = "block";
+    player.style.margin = "0 auto";
     player.style.width = "100%";
-    player.style.borderRadius = "12px";
-    player.style.overflow = "hidden";
+    player.style.maxWidth = "400px";
+
+    const placeholder = document.createElement("div");
+    placeholder.className = "vturb-player-placeholder";
+    placeholder.style.position = "relative";
+    placeholder.style.width = "100%";
+    placeholder.style.padding = "125% 0 0";
+    placeholder.style.zIndex = "0";
+    placeholder.style.backgroundColor = "black";
+    player.appendChild(placeholder);
+
     playerHostRef.current?.appendChild(player);
 
     const script = document.createElement("script");
-    script.src = `https://scripts.converteai.net/${TOKEN}/players/${PLAYER_ID}/player.js`;
+    script.src = `https://scripts.converteai.net/${TOKEN}/players/${PLAYER_ID}/v4/player.js`;
     script.async = true;
     document.head.appendChild(script);
 
@@ -248,7 +259,7 @@ export function VslContent() {
 
         .vsl-player {
           border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
-          background: var(--grafite); min-height: 480px;
+          background: var(--grafite);
           display: flex; align-items: center; justify-content: center; padding: 6px;
         }
 

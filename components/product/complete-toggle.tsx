@@ -17,7 +17,7 @@ export function CompleteToggle({
         className={`flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium transition ${
           completed
             ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-400"
-            : "border-zinc-200 text-zinc-600 hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            : "border-zinc-200 text-cinza-texto hover:bg-zinc-100 dark:border-white/10 dark:hover:bg-white/5"
         }`}
       >
         {completed ? (

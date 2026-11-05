@@ -36,7 +36,7 @@ export function FavoriteButton({ productId }: { productId: string }) {
     <button
       type="button"
       onClick={toggle}
-      className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-zinc-600 transition hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+      className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-cinza-texto transition hover:bg-zinc-100 dark:hover:bg-white/5"
     >
       <Heart
         className={`h-4 w-4 ${favorited ? "fill-red-500 text-red-500" : ""}`}

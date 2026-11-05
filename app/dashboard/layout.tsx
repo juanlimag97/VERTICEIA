@@ -23,7 +23,7 @@ export default async function DashboardLayout({
   const fullName = (user.user_metadata?.full_name as string | undefined) ?? "";
 
   return (
-    <div className="flex h-full min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="flex h-full min-h-screen bg-nevoa dark:bg-tinta">
       <Sidebar
         products={products.map((p) => ({
           id: p.id,

@@ -36,22 +36,22 @@ export function UserMenu({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 text-sm transition hover:bg-zinc-100 dark:hover:bg-zinc-800"
+        className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 text-sm transition hover:bg-zinc-100 dark:hover:bg-white/5"
       >
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-xs font-semibold text-white">
+        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-volt text-xs font-semibold text-tinta">
           {initialsFrom(name || email)}
         </span>
         <span className="hidden max-w-[10rem] truncate font-medium sm:inline">
           {name || email}
         </span>
-        <ChevronDown className="h-3.5 w-3.5 text-zinc-500" />
+        <ChevronDown className="h-3.5 w-3.5 text-cinza-texto" />
       </button>
 
       {open && (
-        <div className="absolute right-0 z-20 mt-2 w-56 overflow-hidden rounded-lg border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="border-b border-zinc-100 px-3 py-2 dark:border-zinc-800">
+        <div className="absolute right-0 z-20 mt-2 w-56 overflow-hidden rounded-lg border border-zinc-200 bg-white py-1 shadow-lg dark:border-white/10 dark:bg-grafite">
+          <div className="border-b border-zinc-100 px-3 py-2 dark:border-white/10">
             <p className="truncate text-sm font-medium">{name || "Minha conta"}</p>
-            <p className="truncate text-xs text-zinc-500">{email}</p>
+            <p className="truncate text-xs text-cinza-texto">{email}</p>
           </div>
           <form action={signOut}>
             <button

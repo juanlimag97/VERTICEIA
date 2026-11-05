@@ -63,7 +63,7 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 - [ ] Link de suporte (WhatsApp, e-mail, etc.) para `NEXT_PUBLIC_SUPPORT_URL`
       — hoje o botão "Precisa de ajuda?" fica escondido até isso ser
       configurado.
-- [ ] Confirmar se **Vértice IA** e **Perfil que Converte** também têm
+- [ ] Confirmar se **Attendio** e **Perfil que Converte** também têm
       algum projeto pra "clonar" — se não tiverem, não precisa fazer nada
       (o card já fica escondido automaticamente). **Reputação 5 Estrelas**
       já está resolvido (ver item de automação abaixo).
@@ -73,7 +73,7 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 ## 🟠 Página `/inicio` (link da bio)
 
 Página nova em `verticeia.vercel.app/inicio` (ou `/inicio` do seu domínio,
-quando tiver) — **focada só no Vértice IA (SDR)**, como você pediu. Os
+quando tiver) — **focada só no Attendio (SDR)**, como você pediu. Os
 outros produtos (Perfil que Converte, Reputação 5 Estrelas, Formatos de
 Criativo) não aparecem aqui — ficam só como order bump no checkout da
 Hubla, fora do nosso código. Montei com texto placeholder — revisa tudo
@@ -82,13 +82,13 @@ antes de colocar o link na bio de verdade:
 - [ ] Revisar as 3 caixinhas de "Como o seu SDR de IA trabalha" (atende
       24/7, qualifica, agenda no CRM) em `lib/site-content.ts` — escrevi
       com base no que já discutimos sobre o produto, mas confirma se bate
-      exatamente com o que o Vértice IA faz hoje.
+      exatamente com o que o Attendio faz hoje.
 - [ ] Preencher os 3 números da faixa cinza (`[N]`) com dados reais —
       **não deixe números inventados**, é melhor tirar a seção do que
       mostrar estatística falsa. Se não tiver números ainda, me avisa que
       eu tiro essa seção.
 - [ ] Configurar `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` com o link de checkout
-      da Hubla do Vértice IA — sem isso, os botões "Quero meu SDR" não
+      da Hubla do Attendio — sem isso, os botões "Quero meu SDR" não
       levam a lugar nenhum.
 - [ ] Configurar `NEXT_PUBLIC_INSTAGRAM_URL` com o link do seu perfil.
 
@@ -97,7 +97,7 @@ antes de colocar o link na bio de verdade:
 Página nova de "compra aprovada", inspirada na do ibe.IA, com a nossa
 paleta. Falta:
 
-- [ ] **Configurar na Hubla** o redirect pós-checkout do Vértice IA pra
+- [ ] **Configurar na Hubla** o redirect pós-checkout do Attendio pra
       `https://verticeia.vercel.app/obrigado` (ou pro seu domínio, quando
       tiver) — isso se configura direto no produto, dentro do painel da
       Hubla.
@@ -129,6 +129,32 @@ paleta. Falta:
       mas se um dia quiser deixar mais restrito, dá pra mover esse arquivo
       pra outro lugar (ex: um Google Drive privado) — me avisa se quiser
       isso.
+
+## 🟩 Rebrand para Attendio
+
+Troquei o nome, as cores, as fontes e a logo no código (de Vértice IA para
+Attendio). Algumas coisas ficaram de fora de propósito — são decisões ou
+ações que não dependem de código:
+
+- [ ] **Migration `0005_rebrand_attendio.sql`**: roda no SQL Editor do
+      Supabase — atualiza o nome exibido do produto de "Vértice IA" para
+      "Attendio" na tabela `products` (o `id`/slug técnico continua
+      `vertice-ia`, não mexi nisso para não quebrar os acessos já
+      concedidos).
+- [ ] O **e-mail de convite/redefinição de senha** (`docs/email-templates.md`)
+      ainda está com o texto antigo "Vértice IA" — reescrevi o arquivo com
+      "Attendio", só falta colar de novo no Supabase (Authentication → Email
+      Templates).
+- [ ] A **URL do site continua `verticeia.vercel.app`** — eu não troco isso
+      sozinho. Se quiser o nome novo na URL, dá pra renomear o projeto na
+      Vercel (Settings → General → Project Name) ou, melhor ainda, apontar
+      um domínio próprio (`attendio.com.br` ou parecido) quando tiver.
+- [ ] Nome do produto **dentro da Hubla** (nome que aparece no checkout,
+      fatura, etc.) — isso fica só no painel da Hubla, não tenho acesso.
+- [ ] Variável de ambiente `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` continua com
+      esse nome internamente (só o identificador, nunca aparece pro
+      usuário) — não precisa mexer, mas se quiser renomear por organização
+      própria, me avisa.
 
 ## 🔵 Quando tiver o domínio próprio
 

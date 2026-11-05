@@ -36,7 +36,7 @@ export function LoginForm() {
   }
 
   return (
-    <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-grafite">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="email" className="text-sm font-medium">
@@ -50,7 +50,7 @@ export function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="voce@email.com"
-            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-900"
+            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-volt focus:ring-1 focus:ring-volt dark:border-white/10 dark:bg-grafite"
           />
         </div>
 
@@ -61,7 +61,7 @@ export function LoginForm() {
             </label>
             <Link
               href="/forgot-password"
-              className="text-xs text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
+              className="text-xs text-cinza-texto hover:text-tinta dark:hover:text-nevoa"
             >
               Esqueci minha senha
             </Link>
@@ -74,7 +74,7 @@ export function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
-            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-900"
+            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-volt focus:ring-1 focus:ring-volt dark:border-white/10 dark:bg-grafite"
           />
         </div>
 
@@ -83,7 +83,7 @@ export function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="rounded-lg bg-indigo-600 py-2 text-sm font-medium text-white transition hover:bg-indigo-500 disabled:opacity-60"
+          className="min-h-14 rounded-full bg-volt text-sm font-medium text-tinta transition hover:bg-volt-escuro disabled:opacity-60"
         >
           {loading ? "Entrando..." : "Entrar"}
         </button>

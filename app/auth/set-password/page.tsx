@@ -16,10 +16,10 @@ export default async function SetPasswordPage() {
   }
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-10 bg-zinc-50 px-6 py-16 dark:bg-zinc-950">
+    <main className="flex flex-1 flex-col items-center justify-center gap-10 bg-nevoa px-6 py-16 dark:bg-tinta">
       <div className="text-center">
         <Logo className="justify-center text-sm" />
-        <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="mt-3 text-sm text-cinza-texto">
           Crie uma senha para acessar sua área de membros.
         </p>
       </div>

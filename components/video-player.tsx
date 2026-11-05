@@ -27,7 +27,7 @@ export function VideoPlayer({ productId }: { productId: string }) {
 
   if (error) {
     return (
-      <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900">
+      <div className="flex aspect-video items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-100 text-sm text-cinza-texto dark:border-white/10 dark:bg-grafite">
         Não foi possível carregar o vídeo. Tente recarregar a página.
       </div>
     );
@@ -35,7 +35,7 @@ export function VideoPlayer({ productId }: { productId: string }) {
 
   if (!src) {
     return (
-      <div className="flex aspect-video items-center justify-center rounded-2xl bg-zinc-100 text-sm text-zinc-500 dark:bg-zinc-900">
+      <div className="flex aspect-video items-center justify-center rounded-2xl bg-zinc-100 text-sm text-cinza-texto dark:bg-grafite">
         Carregando vídeo...
       </div>
     );
@@ -49,7 +49,8 @@ export function VideoPlayer({ productId }: { productId: string }) {
             width: "100%",
             aspectRatio: "16 / 9",
             borderRadius: "1rem",
-            "--media-accent-color": "#4f46e5",
+            "--media-accent-color": "#c8f23c",
+            "--media-accent-text-color": "#0b0f14",
           } as React.CSSProperties
         }
       >

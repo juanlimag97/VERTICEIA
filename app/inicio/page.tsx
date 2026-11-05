@@ -4,7 +4,7 @@ import { Logo } from "@/components/logo";
 import { sdrFeatures, siteStats, checkoutUrl } from "@/lib/site-content";
 
 export const metadata = {
-  title: "Vértice IA — SDR de IA integrado ao seu CRM",
+  title: "Attendio — SDR de IA integrado ao seu CRM",
   description:
     "Um SDR de inteligência artificial que atende, qualifica e agenda reuniões automaticamente, direto no seu CRM.",
 };
@@ -16,7 +16,7 @@ export default function InicioPage() {
   const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#";
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950">
+    <div className="min-h-screen bg-nevoa dark:bg-tinta">
       {/* Header */}
       <header className="flex h-16 items-center justify-between px-6 lg:px-10">
         <Logo className="text-xs" />
@@ -24,7 +24,7 @@ export default function InicioPage() {
           href={checkoutUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-zinc-900 px-4 py-2 text-xs font-medium text-white transition hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+          className="flex min-h-11 items-center justify-center rounded-full bg-volt px-5 text-xs font-medium text-tinta transition hover:bg-volt-escuro"
         >
           Quero meu SDR
         </a>
@@ -32,23 +32,27 @@ export default function InicioPage() {
 
       {/* Hero */}
       <section className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-16 text-center lg:py-24">
-        <p className="text-xs font-semibold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
-          SDR de IA integrado ao seu CRM
+        <span className="label-mono flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-1.5 text-[11px] text-cinza-texto dark:border-white/10">
+          <span className="h-2 w-2 rounded-full bg-volt" />
+          Online 24/7
+        </span>
+        <p className="label-mono text-xs text-indigo-accent">
+          Seu atendente que nunca dorme
         </p>
-        <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+        <h1 className="text-4xl text-balance sm:text-5xl">
           Seu SDR de IA que atende, qualifica e agenda — direto no WhatsApp
         </h1>
-        <p className="max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
-          Nunca mais perca um lead por falta de resposta. A Vértice IA
-          conversa com quem chega, qualifica pelo seu perfil ideal e marca
-          a reunião sozinha, direto no seu CRM.
+        <p className="max-w-xl text-lg text-cinza-texto">
+          Nenhum cliente fica sem resposta. A Attendio conversa com quem
+          chega, qualifica pelo seu perfil ideal e marca a reunião sozinha,
+          direto no seu CRM.
         </p>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <a
             href={checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-indigo-500"
+            className="flex min-h-14 items-center justify-center gap-1.5 rounded-full bg-volt px-6 text-sm font-medium text-tinta transition hover:bg-volt-escuro"
           >
             Quero meu SDR de IA
             <ArrowRight className="h-4 w-4" />
@@ -58,16 +62,16 @@ export default function InicioPage() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 rounded-lg border border-zinc-200 px-6 py-3 text-sm font-medium transition hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
+              className="flex min-h-14 items-center justify-center gap-1.5 rounded-full bg-tinta px-6 text-sm font-medium text-nevoa transition hover:bg-grafite"
             >
               <MessageCircle className="h-4 w-4" />
               Falar no WhatsApp
             </a>
           )}
         </div>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-cinza-texto">
           Já é aluno?{" "}
-          <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+          <Link href="/login" className="font-medium text-indigo-accent hover:opacity-80">
             Entrar na área de membros
           </Link>
         </p>
@@ -76,7 +80,7 @@ export default function InicioPage() {
       {/* Como funciona */}
       <section className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
         <div className="mb-10 text-center">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="text-2xl sm:text-3xl">
             Como o seu SDR de IA trabalha
           </h2>
         </div>
@@ -87,13 +91,13 @@ export default function InicioPage() {
             return (
               <div
                 key={feature.title}
-                className="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
+                className="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-white/10 dark:bg-grafite"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-600 dark:bg-indigo-400/10 dark:text-indigo-400">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-accent/10 text-indigo-accent">
                   <Icon className="h-5 w-5" />
                 </span>
                 <h3 className="font-semibold">{feature.title}</h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="text-sm text-cinza-texto">
                   {feature.description}
                 </p>
               </div>
@@ -103,14 +107,14 @@ export default function InicioPage() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-zinc-100 bg-zinc-50 dark:border-zinc-900 dark:bg-zinc-900/40">
+      <section className="border-y border-zinc-100 bg-white dark:border-white/5 dark:bg-grafite/40">
         <div className="mx-auto grid max-w-3xl grid-cols-1 gap-8 px-6 py-10 text-center sm:grid-cols-3">
           {siteStats.map((stat) => (
             <div key={stat.label}>
-              <p className="text-3xl font-semibold text-indigo-600 dark:text-indigo-400">
+              <p className="text-3xl font-bold text-volt-escuro dark:text-volt">
                 {stat.value}
               </p>
-              <p className="mt-1 text-sm text-zinc-500">{stat.label}</p>
+              <p className="mt-1 text-sm text-cinza-texto">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -118,22 +122,22 @@ export default function InicioPage() {
 
       {/* Implementação (upsell) */}
       <section className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-8 text-center text-white">
-          <p className="text-xs font-medium tracking-widest text-indigo-300 uppercase">
+        <div className="rounded-2xl border border-white/10 bg-tinta p-8 text-center text-nevoa">
+          <p className="label-mono text-xs text-volt">
             Oferta exclusiva
           </p>
-          <h3 className="mt-2 text-xl font-semibold">
+          <h3 className="mt-2 text-xl">
             Prefere que a gente implemente pra você?
           </h3>
-          <p className="mt-2 text-sm text-zinc-400">
-            A equipe da Vértice IA configura o SDR do zero, já integrado ao
+          <p className="mt-2 text-sm text-cinza-texto">
+            A equipe da Attendio configura o SDR do zero, já integrado ao
             seu CRM.
           </p>
           <a
             href={process.env.NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-1.5 rounded-lg bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition hover:bg-zinc-200"
+            className="mt-5 inline-flex min-h-14 items-center gap-1.5 rounded-full bg-volt px-6 text-sm font-medium text-tinta transition hover:bg-volt-escuro"
           >
             Quero a implementação
             <ArrowRight className="h-4 w-4" />
@@ -142,14 +146,14 @@ export default function InicioPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-100 px-6 py-10 text-center dark:border-zinc-900">
+      <footer className="border-t border-zinc-100 px-6 py-10 text-center dark:border-white/5">
         <Logo className="justify-center text-xs" />
-        <div className="mt-4 flex items-center justify-center gap-4 text-zinc-500">
+        <div className="mt-4 flex items-center justify-center gap-4 text-cinza-texto">
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition hover:text-zinc-900 dark:hover:text-zinc-200"
+            className="transition hover:text-tinta dark:hover:text-nevoa"
             aria-label="Instagram"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -163,7 +167,7 @@ export default function InicioPage() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition hover:text-zinc-900 dark:hover:text-zinc-200"
+              className="transition hover:text-tinta dark:hover:text-nevoa"
               aria-label="WhatsApp"
             >
               <MessageCircle className="h-5 w-5" />

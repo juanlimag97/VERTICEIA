@@ -3,7 +3,7 @@ import { CheckCircle2, LogIn, MessageCircle, Users, LifeBuoy, ArrowRight } from 
 import { Logo } from "@/components/logo";
 
 export const metadata = {
-  title: "Compra aprovada — Vértice IA",
+  title: "Compra aprovada — Attendio",
   description: "Sua compra foi aprovada. Veja os próximos passos para acessar.",
 };
 
@@ -41,23 +41,21 @@ export default function ObrigadoPage() {
   ].filter((step): step is NonNullable<typeof step> => step !== null);
 
   return (
-    <div className="min-h-screen overflow-hidden bg-white dark:bg-zinc-950">
+    <div className="min-h-screen overflow-hidden bg-nevoa dark:bg-tinta">
       <header className="flex h-16 items-center px-6 lg:px-10">
         <Logo className="text-xs" />
       </header>
 
       <main className="relative mx-auto flex max-w-2xl flex-col items-center gap-4 px-6 pt-10 pb-20 text-center">
-        <div className="pointer-events-none absolute -top-16 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-indigo-500/10 blur-3xl" />
-
         <span className="flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
           <CheckCircle2 className="h-4 w-4" />
           Sua compra foi aprovada
         </span>
 
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          Bem-vindo à Vértice IA!
+        <h1 className="mt-2 text-3xl text-balance sm:text-4xl">
+          Bem-vindo à Attendio!
         </h1>
-        <p className="max-w-lg text-zinc-600 dark:text-zinc-400">
+        <p className="max-w-lg text-cinza-texto">
           Falta pouco pra você começar. Segue os passos abaixo pra garantir
           seu acesso e não perder nenhum aviso importante.
         </p>
@@ -66,18 +64,18 @@ export default function ObrigadoPage() {
           {steps.map((step, index) => (
             <div
               key={step.title}
-              className="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 sm:flex-row sm:items-center dark:border-zinc-800 dark:bg-zinc-900"
+              className="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 sm:flex-row sm:items-center dark:border-white/10 dark:bg-grafite"
             >
               <div className="flex items-center gap-4 sm:flex-1">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-600 dark:bg-indigo-400/10 dark:text-indigo-400">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-accent/10 text-indigo-accent">
                   <step.icon className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-xs font-medium text-zinc-400">
+                  <p className="label-mono text-xs text-cinza-texto">
                     Passo {index + 1}
                   </p>
                   <h3 className="font-semibold">{step.title}</h3>
-                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="mt-1 text-sm text-cinza-texto">
                     {step.description}
                   </p>
                 </div>
@@ -88,7 +86,7 @@ export default function ObrigadoPage() {
                   href={step.button.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex shrink-0 items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-500"
+                  className="flex min-h-14 shrink-0 items-center justify-center gap-1.5 rounded-full bg-volt px-6 text-sm font-medium text-tinta transition hover:bg-volt-escuro"
                 >
                   {step.button.label}
                   <ArrowRight className="h-4 w-4" />
@@ -96,7 +94,7 @@ export default function ObrigadoPage() {
               ) : (
                 <Link
                   href={step.button.href}
-                  className="flex shrink-0 items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-500"
+                  className="flex min-h-14 shrink-0 items-center justify-center gap-1.5 rounded-full bg-volt px-6 text-sm font-medium text-tinta transition hover:bg-volt-escuro"
                 >
                   {step.button.label}
                   <ArrowRight className="h-4 w-4" />
@@ -107,18 +105,18 @@ export default function ObrigadoPage() {
         </div>
       </main>
 
-      <footer className="border-t border-zinc-100 bg-zinc-50 px-6 py-12 text-center dark:border-zinc-900 dark:bg-zinc-900/40">
+      <footer className="border-t border-zinc-100 bg-white px-6 py-12 text-center dark:border-white/5 dark:bg-grafite/40">
         <Logo className="justify-center text-xs" />
-        <p className="mx-auto mt-3 max-w-sm text-sm text-zinc-500">
+        <p className="mx-auto mt-3 max-w-sm text-sm text-cinza-texto">
           SDR de IA integrado ao seu CRM — atende, qualifica e agenda
           reuniões automaticamente.
         </p>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-zinc-500">
-          <Link href="/inicio" className="transition hover:text-zinc-900 dark:hover:text-zinc-200">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-cinza-texto">
+          <Link href="/inicio" className="transition hover:text-tinta dark:hover:text-nevoa">
             Início
           </Link>
-          <Link href="/login" className="transition hover:text-zinc-900 dark:hover:text-zinc-200">
+          <Link href="/login" className="transition hover:text-tinta dark:hover:text-nevoa">
             Entrar
           </Link>
           {supportUrl && (
@@ -126,19 +124,19 @@ export default function ObrigadoPage() {
               href={supportUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition hover:text-zinc-900 dark:hover:text-zinc-200"
+              className="transition hover:text-tinta dark:hover:text-nevoa"
             >
               Suporte
             </a>
           )}
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-4 text-zinc-500">
+        <div className="mt-6 flex items-center justify-center gap-4 text-cinza-texto">
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition hover:text-zinc-900 dark:hover:text-zinc-200"
+            className="transition hover:text-tinta dark:hover:text-nevoa"
             aria-label="Instagram"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -152,7 +150,7 @@ export default function ObrigadoPage() {
               href={supportUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition hover:text-zinc-900 dark:hover:text-zinc-200"
+              className="transition hover:text-tinta dark:hover:text-nevoa"
               aria-label="WhatsApp"
             >
               <MessageCircle className="h-5 w-5" />
@@ -160,8 +158,8 @@ export default function ObrigadoPage() {
           )}
         </div>
 
-        <p className="mt-8 text-xs text-zinc-400">
-          © {new Date().getFullYear()} Vértice IA. Todos os direitos reservados.
+        <p className="mt-8 text-xs text-cinza-texto">
+          © {new Date().getFullYear()} Attendio. Todos os direitos reservados.
         </p>
       </footer>
     </div>

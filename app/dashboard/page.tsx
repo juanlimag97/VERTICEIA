@@ -31,7 +31,7 @@ export default async function DashboardPage({
           {greeting()}
           {firstName ? `, ${firstName}` : ""}
         </h1>
-        <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+        <p className="mt-2 text-cinza-texto">
           Seus produtos e módulos, todos em um só lugar.
         </p>
       </div>
@@ -49,7 +49,7 @@ export default async function DashboardPage({
           ))}
         </div>
       ) : (
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-cinza-texto">
           Nenhum produto encontrado para &ldquo;{q}&rdquo;.
         </p>
       )}

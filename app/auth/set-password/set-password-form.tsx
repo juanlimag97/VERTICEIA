@@ -39,10 +39,10 @@ export function SetPasswordForm({ email }: { email: string }) {
   }
 
   return (
-    <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-grafite">
       {email && (
-        <p className="mb-4 truncate text-sm text-zinc-500">
-          Conta: <span className="font-medium text-zinc-700 dark:text-zinc-300">{email}</span>
+        <p className="mb-4 truncate text-sm text-cinza-texto">
+          Conta: <span className="font-medium text-tinta dark:text-nevoa">{email}</span>
         </p>
       )}
 
@@ -59,7 +59,7 @@ export function SetPasswordForm({ email }: { email: string }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Mínimo 8 caracteres"
-            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-900"
+            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-volt focus:ring-1 focus:ring-volt dark:border-white/10 dark:bg-grafite"
           />
         </div>
 
@@ -75,7 +75,7 @@ export function SetPasswordForm({ email }: { email: string }) {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="Repita a senha"
-            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-900"
+            className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none focus:border-volt focus:ring-1 focus:ring-volt dark:border-white/10 dark:bg-grafite"
           />
         </div>
 
@@ -84,7 +84,7 @@ export function SetPasswordForm({ email }: { email: string }) {
         <button
           type="submit"
           disabled={loading}
-          className="rounded-lg bg-indigo-600 py-2 text-sm font-medium text-white transition hover:bg-indigo-500 disabled:opacity-60"
+          className="min-h-14 rounded-full bg-volt text-sm font-medium text-tinta transition hover:bg-volt-escuro disabled:opacity-60"
         >
           {loading ? "Salvando..." : "Criar senha e entrar"}
         </button>

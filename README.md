@@ -1,4 +1,4 @@
-# Vértice IA — Área de Membros
+# Attendio — Área de Membros
 
 Dashboard de membros construída com Next.js (App Router) + Supabase (auth e
 banco) + Cloudflare R2 (vídeos, com player próprio) + webhook da Hubla
@@ -34,7 +34,7 @@ banco) + Cloudflare R2 (vídeos, com player próprio) + webhook da Hubla
   usuário no Supabase Auth se ainda não existir (convite por e-mail) e
   libera/revoga o acesso ao produto
 - Página pública **`/inicio`** — landing page pra usar como link da bio do
-  Instagram (separada da VSL), focada só no **Vértice IA (SDR de IA)**,
+  Instagram (separada da VSL), focada só no **Attendio (SDR de IA)**,
   com a oferta de implementação e links de contato. Os outros produtos
   (Perfil que Converte, Reputação 5 Estrelas, Formatos de Criativo) são
   order bump — só aparecem no checkout da Hubla, não nessa página.
@@ -70,7 +70,7 @@ npm install
    [`0002_product_progress.sql`](./supabase/migrations/0002_product_progress.sql) →
    [`0003_fix_profile_email_hijack.sql`](./supabase/migrations/0003_fix_profile_email_hijack.sql).
    O primeiro cria as tabelas `profiles`, `products`, `product_access`, as
-   policies de RLS e já insere o catálogo inicial (Vértice IA, Perfil que
+   policies de RLS e já insere o catálogo inicial (Attendio, Perfil que
    Converte, Reputação 5 Estrelas, Formatos de Criativo). O segundo
    adiciona o progresso ("marcar como concluída") e a coluna `clone_url`
    usada no card "Receber o projeto". O terceiro fecha uma falha de
@@ -84,7 +84,7 @@ npm install
    o link do e-mail de convite.
 6. **Personalizar os e-mails** (convite e redefinição de senha) — por
    padrão o Supabase manda um e-mail genérico dele mesmo. Tem duas partes
-   pra deixar com a cara da Vértice IA:
+   pra deixar com a cara da Attendio:
    - **Conteúdo do e-mail** (dá pra fazer agora, sem precisar de domínio):
      em **Authentication → Email Templates**, edite os templates **"Invite
      user"** e **"Reset Password"**. Modelo pronto pra colar em
@@ -160,7 +160,7 @@ cp .env.example .env.local
 | `HUBLA_WEBHOOK_TOKEN` | Gerado ao criar o webhook no painel da Hubla |
 | `NEXT_PUBLIC_SUPPORT_URL` | Link de suporte (WhatsApp, e-mail, etc.) usado no "Precisa de ajuda?" e na página `/inicio` |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Link do seu Instagram, usado no rodapé de `/inicio` |
-| `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` | Link de checkout da Hubla do Vértice IA (SDR) |
+| `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` | Link de checkout da Hubla do Attendio (SDR) — o nome da variável ficou do branding anterior, mas continua a mesma |
 | `NEXT_PUBLIC_WHATSAPP_GROUP_URL` | Link do grupo de avisos no WhatsApp, usado em `/obrigado` |
 
 Configure as mesmas variáveis em **Vercel → Project Settings →

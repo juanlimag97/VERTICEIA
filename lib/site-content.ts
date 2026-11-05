@@ -1,5 +1,5 @@
 // Conteúdo da página pública /inicio (link da bio), focada no produto
-// principal (Vértice IA — SDR de IA integrado ao CRM). Textos marcados com
+// principal (Attendio — SDR de IA integrado ao CRM). Textos marcados com
 // [COLCHETES] são placeholder — troque antes de divulgar o link de verdade.
 
 export const sdrFeatures = [

@@ -17,16 +17,16 @@ export function ProductCard({
     <div
       className={`group flex h-full flex-col justify-between gap-6 rounded-2xl border p-6 transition ${
         unlocked
-          ? "border-zinc-200 bg-white hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-200/60 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:shadow-none"
-          : "border-zinc-200/70 bg-zinc-100/60 dark:border-zinc-800/70 dark:bg-zinc-900/30"
+          ? "border-zinc-200 bg-white hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-200/60 dark:border-white/10 dark:bg-grafite dark:hover:border-white/20 dark:hover:shadow-none"
+          : "border-zinc-200/70 bg-zinc-100/60 dark:border-white/5 dark:bg-grafite/40"
       }`}
     >
       <div className="flex items-start justify-between">
         <span
           className={`flex h-11 w-11 items-center justify-center rounded-xl ${
             unlocked
-              ? "bg-indigo-600/10 text-indigo-600 dark:bg-indigo-400/10 dark:text-indigo-400"
-              : "bg-zinc-200 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-600"
+              ? "bg-indigo-accent/10 text-indigo-accent"
+              : "bg-zinc-200 text-zinc-400 dark:bg-white/5 dark:text-zinc-600"
           }`}
         >
           <ProductIcon productId={id} className="h-5 w-5" />
@@ -37,7 +37,7 @@ export function ProductCard({
       <div>
         <h3 className="font-medium">{name}</h3>
         {description && (
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-1 text-sm text-cinza-texto">
             {description}
           </p>
         )}
@@ -46,7 +46,7 @@ export function ProductCard({
       <p
         className={`flex items-center gap-1 text-sm font-medium ${
           unlocked
-            ? "text-indigo-600 dark:text-indigo-400"
+            ? "text-indigo-accent"
             : "text-zinc-400 dark:text-zinc-600"
         }`}
       >

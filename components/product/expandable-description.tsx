@@ -10,7 +10,7 @@ export function ExpandableDescription({ text }: { text: string }) {
   return (
     <div className="max-w-3xl">
       <p
-        className={`text-zinc-600 dark:text-zinc-400 ${
+        className={`text-cinza-texto ${
           !expanded && isLong ? "line-clamp-2" : ""
         }`}
       >
@@ -20,7 +20,7 @@ export function ExpandableDescription({ text }: { text: string }) {
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-1 flex items-center gap-1 text-sm font-medium text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200"
+          className="mt-1 flex items-center gap-1 text-sm font-medium text-cinza-texto hover:text-tinta dark:hover:text-nevoa"
         >
           {expanded ? "ver menos" : "ver mais"}
           <ChevronDown

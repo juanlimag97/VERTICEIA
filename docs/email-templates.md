@@ -23,38 +23,38 @@ nosso fluxo e paleta.
 
 **Subject:**
 ```
-Seu acesso à Vértice IA está liberado 🎉
+Seu acesso à Attendio está liberado 🎉
 ```
 
 **Message body (HTML):**
 ```html
-<div style="font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; color: #18181b;">
+<div style="font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; color: #0b0f14;">
   <table role="presentation" style="margin: 0 0 28px;">
     <tr>
-      <td style="width: 24px; height: 24px; background: linear-gradient(135deg, #818cf8, #4f46e5); border-radius: 6px; text-align: center; vertical-align: middle;">
-        <span style="color: #ffffff; font-size: 11px; font-weight: 700;">V</span>
+      <td style="width: 24px; height: 24px; background: #c8f23c; border-radius: 6px; text-align: center; vertical-align: middle;">
+        <span style="color: #0b0f14; font-size: 11px; font-weight: 700;">A</span>
       </td>
-      <td style="padding-left: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">
-        Vértice IA
+      <td style="padding-left: 8px; font-size: 12px; font-weight: 800; letter-spacing: -0.02em;">
+        attendio
       </td>
     </tr>
   </table>
-  <hr style="border: none; border-top: 2px solid #4f46e5; margin: 0 0 28px;" />
+  <hr style="border: none; border-top: 2px solid #c8f23c; margin: 0 0 28px;" />
 
   {{if .Data.full_name}}<p style="font-size: 15px; margin: 0 0 16px;">Olá, {{ .Data.full_name }}!</p>{{else}}<p style="font-size: 15px; margin: 0 0 16px;">Olá!</p>{{end}}
 
-  <p style="font-size: 14px; line-height: 1.6; color: #52525b; margin: 0 0 8px;">
+  <p style="font-size: 14px; line-height: 1.6; color: #5c6472; margin: 0 0 8px;">
     Sua compra foi aprovada e seu acesso já está liberado!
   </p>
-  <p style="font-size: 14px; line-height: 1.6; color: #52525b; margin: 0 0 24px;">
-    Bem-vindo à <strong>Vértice IA</strong>.
+  <p style="font-size: 14px; line-height: 1.6; color: #5c6472; margin: 0 0 24px;">
+    Bem-vindo à <strong>Attendio</strong>.
   </p>
 
-  <div style="background: #f4f4f5; border-radius: 12px; padding: 20px; margin: 0 0 24px;">
-    <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #71717a; margin: 0 0 8px;">
+  <div style="background: #f4f3ee; border-radius: 12px; padding: 20px; margin: 0 0 24px;">
+    <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5c6472; margin: 0 0 8px;">
       Acesso à plataforma
     </p>
-    <p style="font-size: 13px; line-height: 1.6; color: #3f3f46; margin: 0;">
+    <p style="font-size: 13px; line-height: 1.6; color: #0b0f14; margin: 0;">
       Use o e-mail da compra (<strong>{{ .Email }}</strong>) pra entrar.
       Clique no botão abaixo pra criar sua senha agora — é só um clique,
       sem precisar de "esqueci minha senha".
@@ -62,26 +62,26 @@ Seu acesso à Vértice IA está liberado 🎉
   </div>
 
   <p style="font-size: 13px; font-weight: 700; margin: 0 0 12px;">Por onde começar:</p>
-  <ol style="font-size: 13px; line-height: 1.7; color: #3f3f46; margin: 0 0 28px; padding-left: 20px;">
+  <ol style="font-size: 13px; line-height: 1.7; color: #0b0f14; margin: 0 0 28px; padding-left: 20px;">
     <li>Clique no botão abaixo e crie sua senha.</li>
     <li>No dashboard, veja os produtos liberados pra sua conta.</li>
     <li>Abra o primeiro e assista a aula inicial.</li>
   </ol>
 
   <a href="{{ .ConfirmationURL }}"
-     style="display: block; text-align: center; background: #4f46e5; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 14px 24px; border-radius: 8px;">
+     style="display: block; text-align: center; background: #c8f23c; color: #0b0f14; text-decoration: none; font-size: 14px; font-weight: 700; padding: 14px 24px; border-radius: 999px;">
     Criar minha senha e acessar
   </a>
 
-  <p style="font-size: 12px; line-height: 1.6; color: #a1a1aa; margin: 28px 0 0;">
+  <p style="font-size: 12px; line-height: 1.6; color: #8a93a3; margin: 28px 0 0;">
     Se você não fez essa compra, pode ignorar este e-mail.
   </p>
 
   <hr style="border: none; border-top: 1px solid #e4e4e7; margin: 28px 0 16px;" />
-  <p style="font-size: 11px; line-height: 1.6; color: #a1a1aa; margin: 0;">
-    Equipe Vértice IA<br />
+  <p style="font-size: 11px; line-height: 1.6; color: #8a93a3; margin: 0;">
+    Equipe Attendio<br />
     Este e-mail foi enviado para {{ .Email }} porque você comprou um
-    produto da Vértice IA.
+    produto da Attendio.
   </p>
 </div>
 ```
@@ -92,45 +92,45 @@ Seu acesso à Vértice IA está liberado 🎉
 
 **Subject:**
 ```
-Redefinir sua senha — Vértice IA
+Redefinir sua senha — Attendio
 ```
 
 **Message body (HTML):**
 ```html
-<div style="font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; color: #18181b;">
+<div style="font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px; color: #0b0f14;">
   <table role="presentation" style="margin: 0 0 28px;">
     <tr>
-      <td style="width: 24px; height: 24px; background: linear-gradient(135deg, #818cf8, #4f46e5); border-radius: 6px; text-align: center; vertical-align: middle;">
-        <span style="color: #ffffff; font-size: 11px; font-weight: 700;">V</span>
+      <td style="width: 24px; height: 24px; background: #c8f23c; border-radius: 6px; text-align: center; vertical-align: middle;">
+        <span style="color: #0b0f14; font-size: 11px; font-weight: 700;">A</span>
       </td>
-      <td style="padding-left: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">
-        Vértice IA
+      <td style="padding-left: 8px; font-size: 12px; font-weight: 800; letter-spacing: -0.02em;">
+        attendio
       </td>
     </tr>
   </table>
-  <hr style="border: none; border-top: 2px solid #4f46e5; margin: 0 0 28px;" />
+  <hr style="border: none; border-top: 2px solid #c8f23c; margin: 0 0 28px;" />
 
   <h1 style="font-size: 20px; margin: 0 0 16px;">Redefinir sua senha</h1>
 
-  <p style="font-size: 14px; line-height: 1.6; color: #52525b; margin: 0 0 24px;">
+  <p style="font-size: 14px; line-height: 1.6; color: #5c6472; margin: 0 0 24px;">
     Recebemos um pedido para redefinir a senha da conta
     <strong>{{ .Email }}</strong>. Clique no botão abaixo para escolher
     uma nova senha.
   </p>
 
   <a href="{{ .ConfirmationURL }}"
-     style="display: block; text-align: center; background: #4f46e5; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 14px 24px; border-radius: 8px;">
+     style="display: block; text-align: center; background: #c8f23c; color: #0b0f14; text-decoration: none; font-size: 14px; font-weight: 700; padding: 14px 24px; border-radius: 999px;">
     Criar nova senha
   </a>
 
-  <p style="font-size: 12px; line-height: 1.6; color: #a1a1aa; margin: 28px 0 0;">
+  <p style="font-size: 12px; line-height: 1.6; color: #8a93a3; margin: 28px 0 0;">
     Se você não pediu essa redefinição, pode ignorar este e-mail — sua
     senha continua a mesma.
   </p>
 
   <hr style="border: none; border-top: 1px solid #e4e4e7; margin: 28px 0 16px;" />
-  <p style="font-size: 11px; line-height: 1.6; color: #a1a1aa; margin: 0;">
-    Equipe Vértice IA
+  <p style="font-size: 11px; line-height: 1.6; color: #8a93a3; margin: 0;">
+    Equipe Attendio
   </p>
 </div>
 ```

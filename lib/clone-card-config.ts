@@ -11,7 +11,7 @@ const CLONE_CARD_COPY: Record<string, CloneCardCopy> = {
   "reputacao-5-estrelas": {
     platformTag: "Bônus incluído · n8n",
     description:
-      "A Vértice IA montou um fluxo de automação pronto: quando o atendimento é finalizado no seu CRM, ele manda uma mensagem automática pelo WhatsApp pedindo avaliação no Google. É só importar no seu n8n e configurar — o passo a passo está no arquivo.",
+      "A Attendio montou um fluxo de automação pronto: quando o atendimento é finalizado no seu CRM, ele manda uma mensagem automática pelo WhatsApp pedindo avaliação no Google. É só importar no seu n8n e configurar — o passo a passo está no arquivo.",
     buttonLabel: "Baixar o fluxo de automação",
   },
 };

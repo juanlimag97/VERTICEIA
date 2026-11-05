@@ -16,15 +16,15 @@ export function Sidebar({ products }: { products: NavProduct[] }) {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-64 shrink-0 flex-col border-r border-white/5 bg-zinc-950 text-zinc-300 lg:flex">
+    <aside className="hidden w-64 shrink-0 flex-col border-r border-white/5 bg-tinta text-zinc-300 lg:flex">
       <div className="flex h-16 items-center px-6">
         <Link href="/dashboard">
-          <Logo className="text-[13px] text-white" />
+          <Logo variant="dark-surface" className="text-[13px]" />
         </Link>
       </div>
 
       <nav className="flex-1 overflow-y-auto px-3 py-4">
-        <p className="px-3 pb-2 text-[11px] font-medium tracking-widest text-zinc-500 uppercase">
+        <p className="label-mono px-3 pb-2 text-[11px] text-zinc-500">
           Área de membros
         </p>
         <Link
@@ -39,7 +39,7 @@ export function Sidebar({ products }: { products: NavProduct[] }) {
           Dashboard
         </Link>
 
-        <p className="mt-6 px-3 pb-2 text-[11px] font-medium tracking-widest text-zinc-500 uppercase">
+        <p className="label-mono mt-6 px-3 pb-2 text-[11px] text-zinc-500">
           Produtos
         </p>
         <div className="flex flex-col gap-0.5">

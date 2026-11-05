@@ -53,11 +53,8 @@ código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
       Editor do Supabase — mapeia o Attendio IA pro id real confirmado no
       teste. Os outros produtos ("Em breve") ainda não têm
       `hubla_product_id` preenchido — só precisa quando forem lançados.
-- [ ] **Falta confirmar o evento de reembolso/estorno** pra revogar
-      acesso automaticamente quando alguém pede reembolso — ainda não
-      sei o nome exato desse evento na Hubla. Quando você testar um
-      reembolso (ou achar a lista completa de eventos no painel deles),
-      me manda o payload que eu reviso o código do webhook.
+- [x] Evento de reembolso confirmado (`invoice.refunded`) e já
+      tratado no código — revoga o acesso automaticamente.
 - [ ] `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` — link de checkout da
       Implementação (R$ 1.500).
 - [ ] Colar os templates de e-mail (convite + redefinição de senha) no

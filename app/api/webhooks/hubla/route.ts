@@ -7,16 +7,15 @@ import { createAdminClient } from "@/lib/supabase/admin";
 //
 // Eventos que liberam acesso: `customer.member_added` (áreas de
 // assinatura/comunidade) e `invoice.payment_succeeded` (vendas avulsas,
-// tipo "sell" — é o que a Attendio IA realmente dispara, confirmado com
-// um teste real no sandbox da Hubla). Evento que revoga: apenas
-// `customer.member_removed` por enquanto — ainda falta confirmar qual
-// evento a Hubla dispara em reembolso/estorno pra revogar nesses casos.
+// tipo "sell" — é o que a Attendio IA realmente dispara). Eventos que
+// revogam: `customer.member_removed` e `invoice.refunded` (reembolso).
+// Todos confirmados com testes reais no sandbox da Hubla.
 //
 // Autenticação: a Hubla envia o token configurado no painel dela no header
 // `x-hubla-token`. Compare com HUBLA_WEBHOOK_TOKEN (variável de ambiente).
 
 const GRANT_EVENT_TYPES = ["customer.member_added", "invoice.payment_succeeded"] as const;
-const REVOKE_EVENT_TYPES = ["customer.member_removed"] as const;
+const REVOKE_EVENT_TYPES = ["customer.member_removed", "invoice.refunded"] as const;
 
 const hublaEventSchema = z.object({
   type: z.enum([...GRANT_EVENT_TYPES, ...REVOKE_EVENT_TYPES]),

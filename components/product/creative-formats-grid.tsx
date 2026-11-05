@@ -79,7 +79,7 @@ export function CreativeFormatsGrid() {
               Exemplos
             </p>
 
-            <div className="mx-auto mt-2 aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-xl bg-black">
+            <div className="mx-auto mt-2 aspect-[9/16] w-full max-w-[380px] max-h-[70vh] overflow-hidden rounded-xl bg-black">
               <iframe
                 key={open.driveFileIds[activeExample]}
                 src={`https://drive.google.com/file/d/${open.driveFileIds[activeExample]}/preview`}

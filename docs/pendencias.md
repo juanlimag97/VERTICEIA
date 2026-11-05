@@ -143,10 +143,13 @@ ações que não dependem de código:
       concedidos). **Enquanto não rodar essa migration, "Vértice IA"
       continua aparecendo no dashboard** — isso é dado do banco, não do
       código.
-- [ ] O **e-mail de convite/redefinição de senha** (`docs/email-templates.md`)
-      ainda está com o texto antigo "Vértice IA" — reescrevi o arquivo com
-      "Attendio", só falta colar de novo no Supabase (Authentication → Email
-      Templates).
+- [x] O **e-mail de convite/redefinição de senha** (`docs/email-templates.md`)
+      já foi colado no Supabase com a identidade nova.
+- [ ] **Migration `0006_dashboard_order.sql`**: roda no SQL Editor do
+      Supabase — reordena o grid pra Formatos de Criativo ficar ao lado
+      do Attendio IA, e deixa Perfil que Converte/Reputação 5 Estrelas
+      por último (eles já aparecem bloqueados com "Em breve" — isso é só
+      código, não depende dessa migration).
 - [ ] A **URL do site continua `verticeia.vercel.app`** — eu não troco isso
       sozinho. Se quiser o nome novo na URL, dá pra renomear o projeto na
       Vercel (Settings → General → Project Name) ou, melhor ainda, apontar

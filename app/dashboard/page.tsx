@@ -45,6 +45,7 @@ export default async function DashboardPage({
               name={product.name}
               description={product.description}
               unlocked={product.unlocked}
+              comingSoon={product.comingSoon}
             />
           ))}
         </div>

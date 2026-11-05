@@ -7,11 +7,13 @@ export function ProductCard({
   name,
   description,
   unlocked,
+  comingSoon = false,
 }: {
   id: string;
   name: string;
   description: string | null;
   unlocked: boolean;
+  comingSoon?: boolean;
 }) {
   const content = (
     <div
@@ -31,7 +33,14 @@ export function ProductCard({
         >
           <ProductIcon productId={id} className="h-5 w-5" />
         </span>
-        {!unlocked && <Lock className="h-4 w-4 text-zinc-400" />}
+        {!unlocked && (
+          <span className="flex items-center gap-1">
+            {comingSoon && (
+              <span className="label-mono text-[10px] text-zinc-400">Em breve</span>
+            )}
+            <Lock className="h-4 w-4 text-zinc-400" />
+          </span>
+        )}
       </div>
 
       <div>
@@ -55,6 +64,8 @@ export function ProductCard({
             Acessar
             <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
           </>
+        ) : comingSoon ? (
+          "Em breve"
         ) : (
           "Sem acesso"
         )}

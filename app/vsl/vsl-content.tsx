@@ -91,14 +91,16 @@ export function VslContent() {
   }, []);
 
   // Player VTurb — injeta o elemento customizado + script deles, exatamente
-  // como no embed fornecido pela VTurb (id prefixado "vid-", placeholder
-  // interno com aspect-ratio próprio, e o script na rota /v4/).
+  // como no embed de A/B test fornecido pela VTurb (id prefixado "ab-" e
+  // script na rota /ab-test/). O placeholder interno com aspect-ratio
+  // próprio não vem no embed deles, mas mantemos pra evitar o layout
+  // "pular" enquanto o script carrega.
   useEffect(() => {
-    const PLAYER_ID = "6aecec06b705df97e6574331";
+    const PLAYER_ID = "6aecf327f821f994a63b6e39";
     const TOKEN = "b639b32a-d7d7-4939-90a6-b87dc343b73d";
 
     const player = document.createElement("vturb-smartplayer");
-    player.id = `vid-${PLAYER_ID}`;
+    player.id = `ab-${PLAYER_ID}`;
     player.style.display = "block";
     player.style.margin = "0 auto";
     player.style.width = "100%";
@@ -116,7 +118,7 @@ export function VslContent() {
     playerHostRef.current?.appendChild(player);
 
     const script = document.createElement("script");
-    script.src = `https://scripts.converteai.net/${TOKEN}/players/${PLAYER_ID}/v4/player.js`;
+    script.src = `https://scripts.converteai.net/${TOKEN}/ab-test/${PLAYER_ID}/player.js`;
     script.async = true;
     document.head.appendChild(script);
 

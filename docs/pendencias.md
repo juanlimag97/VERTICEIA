@@ -3,6 +3,25 @@
 Checklist vivo. Toda vez que aparecer algo novo que depende de você (não de
 código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 
+## 🟥 Página `/upsell` (etapa entre compra e `/obrigado`)
+
+Clonei o modelo que você mandou (`editordr.com/1aula/`) como `/upsell` dentro
+deste mesmo app, já com a identidade da Attendio — mesma estrutura (aviso
+"só está online aqui", chamada pra assistir a aula, player, rodapé), só
+trocando o vermelho/laranja pelo volt.
+
+- [ ] Preencher o **Player ID e Token reais da VTurb** dessa aula em
+      `app/upsell/upsell-content.tsx` (procure por `SEU_PLAYER_ID_AQUI` e
+      `SEU_TOKEN_AQUI`) — hoje está com placeholder, por isso o player
+      mostra "Video not found".
+- [ ] **Configurar na Hubla** o redirect pós-checkout do produto principal
+      pra `https://attendio.com.br/upsell` (em vez de ir direto pro
+      `/obrigado`) — essa página fica entre a compra aprovada e o
+      `/obrigado`. Depois que a pessoa assistir, o botão/link de
+      continuação dessa página (ainda não defini pra onde vai — me avisa
+      se quer que ele leve pro `/obrigado`, pra um checkout de upsell, ou
+      outra coisa) decide o próximo passo.
+
 ## 🟪 Página `/vsl` (aula/VSL)
 
 Reconstruí a VSL que estava num projeto separado (`vsl-vertice-ia.vercel.app`)

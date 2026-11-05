@@ -3,10 +3,8 @@
 import { useEffect, useRef } from "react";
 import { Logo } from "@/components/logo";
 
-// Placeholder — troque pelo Player ID/Token reais do VTurb dessa aula
-// (ver docs/pendencias.md).
-const PLAYER_ID = "SEU_PLAYER_ID_AQUI";
-const TOKEN = "SEU_TOKEN_AQUI";
+const PLAYER_ID = "6aecf673341e13d80c8c0e02";
+const TOKEN = "b639b32a-d7d7-4939-90a6-b87dc343b73d";
 
 export function UpsellContent() {
   const playerHostRef = useRef<HTMLDivElement>(null);

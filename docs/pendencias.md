@@ -10,10 +10,8 @@ deste mesmo app, já com a identidade da Attendio — mesma estrutura (aviso
 "só está online aqui", chamada pra assistir a aula, player, rodapé), só
 trocando o vermelho/laranja pelo volt.
 
-- [ ] Preencher o **Player ID e Token reais da VTurb** dessa aula em
-      `app/upsell/upsell-content.tsx` (procure por `SEU_PLAYER_ID_AQUI` e
-      `SEU_TOKEN_AQUI`) — hoje está com placeholder, por isso o player
-      mostra "Video not found".
+- [x] Player ID e Token reais da VTurb já preenchidos em
+      `app/upsell/upsell-content.tsx` com o embed real.
 - [ ] **Configurar na Hubla** o redirect pós-checkout do produto principal
       pra `https://attendio.com.br/upsell` (em vez de ir direto pro
       `/obrigado`) — essa página fica entre a compra aprovada e o

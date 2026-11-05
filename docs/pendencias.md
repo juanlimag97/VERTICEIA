@@ -3,6 +3,17 @@
 Checklist vivo. Toda vez que aparecer algo novo que depende de você (não de
 código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 
+## 🟦 Conta de suporte (acesso total)
+
+- [ ] **Criar o login**: Supabase → Authentication → Users → **Add user**
+      (não "Invite user") → e-mail `suporte@attendio.com.br`, a senha que
+      você definiu, marcar **"Auto Confirm User"**.
+- [ ] **Depois de criar o login**, rodar a migration
+      `0011_suporte_full_access.sql` no SQL Editor — libera acesso a todos
+      os produtos do catálogo pra essa conta (pra equipe revisar a área de
+      membros como se fosse cliente). Tem que ser nessa ordem: login
+      primeiro, migration depois.
+
 ## 🟥 Página `/upsell` (etapa entre compra e `/obrigado`)
 
 Clonei o modelo que você mandou (`editordr.com/1aula/`) como `/upsell` dentro

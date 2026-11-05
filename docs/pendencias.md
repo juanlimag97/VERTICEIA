@@ -3,6 +3,29 @@
 Checklist vivo. Toda vez que aparecer algo novo que depende de você (não de
 código), eu adiciono aqui. Marque `[x]` conforme for resolvendo.
 
+## 🟪 Página `/vsl` (aula/VSL)
+
+Reconstruí a VSL que estava num projeto separado (`vsl-vertice-ia.vercel.app`)
+como `/vsl` dentro deste mesmo app, já com a identidade da Attendio —
+mesma estrutura, copy e animação do WhatsApp de antes.
+
+- [ ] Preencher o **Player ID e o Token da VTurb** de verdade em
+      `app/vsl/vsl-content.tsx` (procure por `SEU_PLAYER_ID_AQUI` e
+      `SEU_TOKEN_AQUI`) — sem isso o player mostra "Video not found".
+- [ ] Preencher o **Pixel ID da UTMify** de verdade (procure por
+      `SEU_PIXEL_ID_AQUI` no mesmo arquivo).
+- [ ] Configurar o subdomínio `vsl.attendio.com.br` apontando pra essa
+      página — você escolheu deixar a área de membros na raiz
+      (`attendio.com.br`) e a VSL no subdomínio. Passos: no projeto da
+      Vercel → Settings → Domains → adiciona `vsl.attendio.com.br` →
+      cria o CNAME que a Vercel pedir no seu provedor de DNS. Como é o
+      mesmo projeto/deploy, não precisa de nada além do DNS — a Vercel
+      já serve `/vsl` nesse subdomínio automaticamente assim que o
+      domínio for validado.
+- [ ] O projeto antigo (`vsl-vertice-ia.vercel.app`) continua no ar e
+      não depende desta mudança — você decide se quer desativá-lo depois
+      que o subdomínio novo estiver validado.
+
 ## 🔴 Segurança — urgente ✅ concluído
 
 - [x] **Rodar a migration `0003_fix_profile_email_hijack.sql`** no SQL

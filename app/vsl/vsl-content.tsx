@@ -96,7 +96,7 @@ export function VslContent() {
   // próprio não vem no embed deles, mas mantemos pra evitar o layout
   // "pular" enquanto o script carrega.
   useEffect(() => {
-    const PLAYER_ID = "6aecf327f821f994a63b6e39";
+    const PLAYER_ID = "6aed001ff821f994a63b77ca";
     const TOKEN = "b639b32a-d7d7-4939-90a6-b87dc343b73d";
 
     const player = document.createElement("vturb-smartplayer");

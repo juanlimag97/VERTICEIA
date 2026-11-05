@@ -12,7 +12,7 @@ export default function VslPage() {
       {/* Dicas de carregamento recomendadas pela VTurb pro player da aula */}
       <link
         rel="preload"
-        href="https://scripts.converteai.net/b639b32a-d7d7-4939-90a6-b87dc343b73d/ab-test/6aecf327f821f994a63b6e39/player.js"
+        href="https://scripts.converteai.net/b639b32a-d7d7-4939-90a6-b87dc343b73d/ab-test/6aed001ff821f994a63b77ca/player.js"
         as="script"
       />
       <link

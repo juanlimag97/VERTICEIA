@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { Logo } from "@/components/logo";
 
 const PLAYER_ID = "6aecf673341e13d80c8c0e02";
@@ -60,11 +61,18 @@ export function UpsellContent() {
         </p>
       </div>
 
-      <main className="flex flex-1 items-center justify-center bg-tinta px-5 py-10">
+      <main className="flex flex-1 flex-col items-center justify-center gap-6 bg-tinta px-5 py-10">
         <div
           className="w-full max-w-[400px] overflow-hidden rounded-2xl shadow-[0_20px_60px_rgba(200,242,60,0.25),0_4px_20px_rgba(0,0,0,0.4)]"
           ref={playerHostRef}
         />
+
+        <Link
+          href="/obrigado"
+          className="text-[11px] text-nevoa/10 transition hover:text-cinza-texto"
+        >
+          não, obrigado
+        </Link>
       </main>
 
       <footer className="border-t border-white/10 bg-grafite px-5 py-5 text-center text-[10px] tracking-[2px] text-cinza-texto uppercase">

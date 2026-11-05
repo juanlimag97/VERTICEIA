@@ -2,6 +2,8 @@ import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { sendEmail } from "@/lib/email";
+import { implementacaoCallEmail } from "@/lib/email-templates";
 
 // Documentação: https://hubla.gitbook.io/docs/webhooks
 //
@@ -72,6 +74,12 @@ export async function POST(request: Request) {
     .join(" ")
     .trim();
 
+  // Implementação é um serviço avulso (não um produto da área de membros):
+  // não mexe em product_access, só dispara o e-mail pra agendar a call.
+  if (event.product.id === process.env.HUBLA_IMPLEMENTACAO_PRODUCT_ID) {
+    return handleImplementacaoPurchase(type, event, fullName);
+  }
+
   const supabase = createAdminClient();
 
   const { data: product, error: productError } = await supabase
@@ -134,6 +142,47 @@ export async function POST(request: Request) {
       console.error("[hubla webhook] erro ao revogar acesso:", error);
       return NextResponse.json({ error: "internal_error" }, { status: 500 });
     }
+  }
+
+  return NextResponse.json({ ok: true });
+}
+
+/**
+ * Compra da Implementação (serviço avulso, não um produto da área de
+ * membros): em vez de liberar acesso, manda um e-mail com o link do
+ * Calendly pra marcar a call.
+ */
+async function handleImplementacaoPurchase(
+  type: z.infer<typeof hublaEventSchema>["type"],
+  event: z.infer<typeof hublaEventSchema>["event"],
+  fullName: string
+) {
+  if (!(GRANT_EVENT_TYPES as readonly string[]).includes(type)) {
+    // Reembolso: não tem acesso pra revogar, só confirma recebimento.
+    return NextResponse.json({ ok: true });
+  }
+
+  if (
+    type === "invoice.payment_succeeded" &&
+    event.invoice?.status &&
+    event.invoice.status !== "paid"
+  ) {
+    return NextResponse.json({ ignored: true });
+  }
+
+  const calendlyUrl = process.env.IMPLEMENTACAO_CALENDLY_URL;
+  if (!calendlyUrl) {
+    console.error(
+      "[hubla webhook] IMPLEMENTACAO_CALENDLY_URL não configurado — e-mail de agendamento não enviado."
+    );
+    return NextResponse.json({ ok: true });
+  }
+
+  const { subject, html } = implementacaoCallEmail(fullName, calendlyUrl);
+  const { error } = await sendEmail({ to: event.user.email, subject, html });
+
+  if (error) {
+    console.error("[hubla webhook] erro ao enviar e-mail de agendamento:", error);
   }
 
   return NextResponse.json({ ok: true });

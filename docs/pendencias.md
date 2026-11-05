@@ -97,6 +97,18 @@ mesma estrutura, copy e animação do WhatsApp de antes.
       tratado no código — revoga o acesso automaticamente.
 - [ ] `NEXT_PUBLIC_IMPLEMENTACAO_CHECKOUT_URL` — link de checkout da
       Implementação (R$ 1.500).
+- [ ] **E-mail de agendamento da call de Implementação**: criei a lógica
+      (quando alguém compra a Implementação, manda um e-mail com o link do
+      Calendly em vez de liberar acesso no dashboard). Falta configurar 3
+      variáveis de ambiente — detalhes no README, seção "4.1 E-mail de
+      agendamento da Implementação":
+  - [ ] `RESEND_API_KEY` e `RESEND_FROM_EMAIL` — crie uma conta grátis no
+        [Resend](https://resend.com), verifique seu domínio, gere uma API
+        key.
+  - [ ] `HUBLA_IMPLEMENTACAO_PRODUCT_ID` — o id do produto Implementação
+        na Hubla (mesmo processo dos outros: compra de teste ou log de
+        entrega do webhook).
+  - [ ] `IMPLEMENTACAO_CALENDLY_URL` — o link do seu Calendly.
 - [x] Templates de e-mail (convite + redefinição de senha) colados no
       Supabase, já com a identidade da Attendio.
 

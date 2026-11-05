@@ -141,6 +141,25 @@ liberar a URL, então o vídeo nunca fica num link público fixo.
    com o link — ele aparece no card "Receber o projeto" da página do
    produto.
 
+### 4.1 E-mail de agendamento da Implementação
+
+A Implementação (R$ 1.500) não é um produto da área de membros — é um
+serviço avulso. Quando alguém compra, em vez de liberar acesso no
+dashboard, o webhook manda um e-mail com o link do Calendly pra marcar a
+call. Isso precisa de duas coisas a mais:
+
+1. **Conta no [Resend](https://resend.com)** (envio dos e-mails
+   transacionais): crie uma conta, verifique seu domínio (ou use o domínio
+   de teste deles pra começar) e gere uma API key em *API Keys*. Preencha
+   `RESEND_API_KEY` e `RESEND_FROM_EMAIL` (ex:
+   `Attendio <contato@attendio.com.br>`).
+2. **`HUBLA_IMPLEMENTACAO_PRODUCT_ID`**: o id do produto "Implementação" na
+   Hubla — mesmo processo dos outros produtos (passo 4 acima): faça uma
+   compra de teste ou confira o payload de uma compra real no log de
+   entregas do webhook, no painel da Hubla.
+3. **`IMPLEMENTACAO_CALENDLY_URL`**: o link do seu Calendly pra agendar a
+   call (ex: `https://calendly.com/seu-usuario/implementacao`).
+
 ### 5. Variáveis de ambiente
 
 Copie `.env.example` para `.env.local` e preencha:
@@ -162,6 +181,10 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Link do seu Instagram, usado no rodapé de `/inicio` |
 | `NEXT_PUBLIC_CHECKOUT_VERTICE_IA` | Link de checkout da Hubla do Attendio (SDR) — o nome da variável ficou do branding anterior, mas continua a mesma |
 | `NEXT_PUBLIC_WHATSAPP_GROUP_URL` | Link do grupo de avisos no WhatsApp, usado em `/obrigado` |
+| `RESEND_API_KEY` | Resend → API Keys |
+| `RESEND_FROM_EMAIL` | Remetente dos e-mails transacionais (ex: `Attendio <contato@attendio.com.br>`) — precisa ser de um domínio verificado no Resend |
+| `HUBLA_IMPLEMENTACAO_PRODUCT_ID` | Id do produto "Implementação" na Hubla — ver seção 4.1 |
+| `IMPLEMENTACAO_CALENDLY_URL` | Link do Calendly pra agendar a call de implementação |
 
 Configure as mesmas variáveis em **Vercel → Project Settings →
 Environment Variables** antes do deploy.

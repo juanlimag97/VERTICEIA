@@ -1,6 +1,6 @@
 // Conteúdo da página pública /inicio (link da bio), focada no produto
-// principal (Attendio — SDR de IA integrado ao CRM). Textos marcados com
-// [COLCHETES] são placeholder — troque antes de divulgar o link de verdade.
+// principal (Attendio, SDR de IA integrado ao CRM). Textos marcados com
+// [COLCHETES] são placeholder, troque antes de divulgar o link de verdade.
 
 export const sdrFeatures = [
   {
@@ -16,7 +16,7 @@ export const sdrFeatures = [
   {
     title: "Agenda direto no seu CRM",
     description:
-      "Quando o lead tá qualificado, marca a reunião sozinho — sem ida e volta manual.",
+      "Quando o lead tá qualificado, marca a reunião sozinho, sem ida e volta manual.",
   },
 ];
 
@@ -37,25 +37,25 @@ export const personas = [
     icon: "GraduationCap" as const,
     title: "Infoprodutores e coaches",
     description:
-      "Lançamento lota a caixa de mensagem? O Attendio responde todo mundo, sem perder ninguém no meio do caminho.",
+      "Na época de lançamento a caixa de mensagem lota rápido, e o Attendio dá conta de responder todo mundo sem deixar ninguém esperando.",
   },
   {
     icon: "Stethoscope" as const,
     title: "Clínicas e serviços",
     description:
-      "Paciente que não é respondido rápido desmarca sozinho. O Attendio não deixa isso acontecer.",
+      "Paciente que demora pra ser respondido costuma desmarcar sozinho. Com o Attendio isso não acontece.",
   },
   {
     icon: "Home" as const,
     title: "Imobiliárias",
     description:
-      "Lead de imóvel esfria em minutos. O Attendio qualifica e agenda a visita na hora.",
+      "Lead de imóvel esfria rápido. O Attendio já qualifica e marca a visita na hora que a conversa acontece.",
   },
   {
     icon: "Briefcase" as const,
     title: "Agências e negócios locais",
     description:
-      "Toda campanha de tráfego gera lead no WhatsApp. O Attendio garante que ninguém fica sem resposta.",
+      "Toda campanha de tráfego traz gente querendo falar no WhatsApp, e o Attendio garante que ninguém fica sem resposta.",
   },
 ];
 
@@ -71,7 +71,7 @@ export const faqs = [
   {
     question: "O Attendio funciona no Instagram também?",
     answer:
-      "Hoje o Attendio atende só pelo WhatsApp — é o canal onde a conversa realmente fecha venda.",
+      "Hoje o Attendio atende só pelo WhatsApp, que é o canal onde a conversa realmente fecha venda.",
   },
   {
     question: "Preciso saber programar pra configurar?",
@@ -86,7 +86,7 @@ export const faqs = [
   {
     question: "Serve pro meu tipo de negócio?",
     answer:
-      "Se seu negócio recebe lead pelo WhatsApp e demora a responder, o Attendio resolve — não importa o nicho.",
+      "Se seu negócio recebe lead pelo WhatsApp e demora a responder, o Attendio resolve, não importa o nicho.",
   },
 ];
 

@@ -22,7 +22,7 @@ import {
 } from "@/lib/site-content";
 
 export const metadata = {
-  title: "Attendio — SDR de IA pro seu WhatsApp",
+  title: "Attendio: SDR de IA pro seu WhatsApp",
   description:
     "Um SDR de inteligência artificial que atende, qualifica e agenda reuniões automaticamente no WhatsApp, direto no seu CRM.",
 };
@@ -64,7 +64,7 @@ export default function InicioPage() {
           Seu atendente que nunca dorme
         </p>
         <h1 className="text-4xl text-balance sm:text-5xl">
-          Seu SDR de IA que atende, qualifica e agenda — direto no WhatsApp
+          Seu SDR de IA que atende, qualifica e agenda direto no WhatsApp
         </h1>
         <p className="max-w-xl text-lg text-cinza-texto">
           Nenhum cliente fica sem resposta. A Attendio conversa com quem

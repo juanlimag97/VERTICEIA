@@ -302,8 +302,8 @@ export function VslContent() {
           <em>Nenhum cliente espera.</em>
         </h1>
         <p className="vsl-sub">
-          A Attendio responde, qualifica e agenda no WhatsApp e no Instagram.
-          Antes que seu cliente pense em desistir.
+          A Attendio responde, qualifica e agenda no WhatsApp. Antes que seu
+          cliente pense em desistir.
         </p>
 
         <div className="wa-phone" aria-hidden="true">

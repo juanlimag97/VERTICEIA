@@ -26,4 +26,68 @@ export const siteStats: { value: string; label: string }[] = [
   { value: "24/7", label: "atendimento automático" },
 ];
 
+export const painPoints = [
+  "Enquanto ninguém responde, o lead já está falando com o concorrente.",
+  "Resposta fora do horário comercial é venda que esfria.",
+  "Cada \"depois eu respondo\" é um cliente a menos no fim do mês.",
+];
+
+export const personas = [
+  {
+    icon: "GraduationCap" as const,
+    title: "Infoprodutores e coaches",
+    description:
+      "Lançamento lota a caixa de mensagem? O Attendio responde todo mundo, sem perder ninguém no meio do caminho.",
+  },
+  {
+    icon: "Stethoscope" as const,
+    title: "Clínicas e serviços",
+    description:
+      "Paciente que não é respondido rápido desmarca sozinho. O Attendio não deixa isso acontecer.",
+  },
+  {
+    icon: "Home" as const,
+    title: "Imobiliárias",
+    description:
+      "Lead de imóvel esfria em minutos. O Attendio qualifica e agenda a visita na hora.",
+  },
+  {
+    icon: "Briefcase" as const,
+    title: "Agências e negócios locais",
+    description:
+      "Toda campanha de tráfego gera lead no WhatsApp. O Attendio garante que ninguém fica sem resposta.",
+  },
+];
+
+export const whatsIncluded = [
+  "SDR de IA configurado pro seu WhatsApp",
+  "Qualificação automática pelo seu perfil de cliente ideal",
+  "Agendamento direto no seu CRM, sem intervenção manual",
+  "Atendimento 24 horas por dia, todos os dias",
+  "Acesso à área de membros com o passo a passo completo",
+];
+
+export const faqs = [
+  {
+    question: "O Attendio funciona no Instagram também?",
+    answer:
+      "Hoje o Attendio atende só pelo WhatsApp — é o canal onde a conversa realmente fecha venda.",
+  },
+  {
+    question: "Preciso saber programar pra configurar?",
+    answer:
+      "Não. A área de membros tem o passo a passo completo. E se preferir, a equipe pode configurar tudo pra você.",
+  },
+  {
+    question: "Funciona com o meu CRM?",
+    answer:
+      "Sim, o Attendio agenda direto no seu CRM, sem precisar trocar de ferramenta.",
+  },
+  {
+    question: "Serve pro meu tipo de negócio?",
+    answer:
+      "Se seu negócio recebe lead pelo WhatsApp e demora a responder, o Attendio resolve — não importa o nicho.",
+  },
+];
+
 export const checkoutUrl = process.env.NEXT_PUBLIC_CHECKOUT_VERTICE_IA || "#";

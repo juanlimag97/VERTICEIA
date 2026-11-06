@@ -1,15 +1,39 @@
 import Link from "next/link";
-import { ArrowRight, CalendarCheck, MessageCircle, Target } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  CalendarCheck,
+  CheckCircle2,
+  GraduationCap,
+  Home as HomeIcon,
+  MessageCircle,
+  Stethoscope,
+  Target,
+} from "lucide-react";
 import { Logo } from "@/components/logo";
-import { sdrFeatures, siteStats, checkoutUrl } from "@/lib/site-content";
+import {
+  sdrFeatures,
+  siteStats,
+  painPoints,
+  personas,
+  whatsIncluded,
+  faqs,
+  checkoutUrl,
+} from "@/lib/site-content";
 
 export const metadata = {
-  title: "Attendio — SDR de IA integrado ao seu CRM",
+  title: "Attendio — SDR de IA pro seu WhatsApp",
   description:
-    "Um SDR de inteligência artificial que atende, qualifica e agenda reuniões automaticamente, direto no seu CRM.",
+    "Um SDR de inteligência artificial que atende, qualifica e agenda reuniões automaticamente no WhatsApp, direto no seu CRM.",
 };
 
 const FEATURE_ICONS = [MessageCircle, Target, CalendarCheck];
+const PERSONA_ICONS = {
+  GraduationCap,
+  Stethoscope,
+  Home: HomeIcon,
+  Briefcase,
+};
 
 export default function InicioPage() {
   const whatsappUrl = process.env.NEXT_PUBLIC_SUPPORT_URL;
@@ -77,6 +101,25 @@ export default function InicioPage() {
         </p>
       </section>
 
+      {/* Dor / agitação */}
+      <section className="border-y border-zinc-100 bg-white px-6 py-16 dark:border-white/5 dark:bg-grafite/40 lg:py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl sm:text-3xl">
+            O que acontece quando o lead espera
+          </h2>
+          <div className="mt-8 flex flex-col gap-4 text-left">
+            {painPoints.map((point) => (
+              <p
+                key={point}
+                className="rounded-2xl border border-zinc-200 bg-nevoa px-5 py-4 text-sm text-cinza-texto dark:border-white/10 dark:bg-tinta"
+              >
+                {point}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Como funciona */}
       <section className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
         <div className="mb-10 text-center">
@@ -106,8 +149,54 @@ export default function InicioPage() {
         </div>
       </section>
 
+      {/* Pra quem é */}
+      <section className="mx-auto max-w-5xl px-6 py-16 lg:py-20">
+        <div className="mb-10 text-center">
+          <h2 className="text-2xl sm:text-3xl">Pra quem é o Attendio</h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {personas.map((persona) => {
+            const Icon = PERSONA_ICONS[persona.icon];
+            return (
+              <div
+                key={persona.title}
+                className="flex items-start gap-4 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-white/10 dark:bg-grafite"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-volt/15 text-volt-escuro dark:bg-volt/10 dark:text-volt">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="font-semibold">{persona.title}</h3>
+                  <p className="mt-1 text-sm text-cinza-texto">
+                    {persona.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* O que você recebe */}
+      <section className="border-y border-zinc-100 bg-white px-6 py-16 dark:border-white/5 dark:bg-grafite/40 lg:py-20">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="text-center text-2xl sm:text-3xl">
+            O que você recebe
+          </h2>
+          <ul className="mt-8 flex flex-col gap-3">
+            {whatsIncluded.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-volt-escuro dark:text-volt" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Stats */}
-      <section className="border-y border-zinc-100 bg-white dark:border-white/5 dark:bg-grafite/40">
+      <section>
         <div className="mx-auto grid max-w-3xl grid-cols-1 gap-8 px-6 py-10 text-center sm:grid-cols-3">
           {siteStats.map((stat) => (
             <div key={stat.label}>
@@ -115,6 +204,19 @@ export default function InicioPage() {
                 {stat.value}
               </p>
               <p className="mt-1 text-sm text-cinza-texto">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto max-w-2xl px-6 py-16 lg:py-20">
+        <h2 className="text-center text-2xl sm:text-3xl">Perguntas frequentes</h2>
+        <div className="mt-8 flex flex-col divide-y divide-zinc-200 dark:divide-white/10">
+          {faqs.map((faq) => (
+            <div key={faq.question} className="py-5">
+              <h3 className="font-semibold">{faq.question}</h3>
+              <p className="mt-2 text-sm text-cinza-texto">{faq.answer}</p>
             </div>
           ))}
         </div>

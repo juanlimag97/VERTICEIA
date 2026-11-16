@@ -69,6 +69,11 @@ export async function POST(request: Request) {
   }
 
   const { type, event } = parsed.data;
+  // Normaliza o e-mail (a Hubla manda do jeito que o comprador digitou, e o
+  // Supabase Auth guarda em minúsculo — sem isso, duas entregas do mesmo
+  // evento com grafias diferentes de maiúscula/minúscula não se reconhecem
+  // como o mesmo usuário e o segundo envio quebra com erro 500).
+  const email = event.user.email.trim().toLowerCase();
   const fullName = [event.user.firstName, event.user.lastName]
     .filter(Boolean)
     .join(" ")
@@ -77,7 +82,7 @@ export async function POST(request: Request) {
   // Implementação é um serviço avulso (não um produto da área de membros):
   // não mexe em product_access, só dispara o e-mail pra agendar a call.
   if (event.product.id === process.env.HUBLA_IMPLEMENTACAO_PRODUCT_ID) {
-    return handleImplementacaoPurchase(type, event, fullName);
+    return handleImplementacaoPurchase(type, event.invoice?.status, email, fullName);
   }
 
   const supabase = createAdminClient();
@@ -110,7 +115,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ignored: true });
   }
 
-  const profileId = await getOrCreateProfileId(supabase, event.user.email, fullName);
+  const profileId = await getOrCreateProfileId(supabase, email, fullName);
   if (!profileId) {
     return NextResponse.json({ error: "internal_error" }, { status: 500 });
   }
@@ -154,7 +159,8 @@ export async function POST(request: Request) {
  */
 async function handleImplementacaoPurchase(
   type: z.infer<typeof hublaEventSchema>["type"],
-  event: z.infer<typeof hublaEventSchema>["event"],
+  invoiceStatus: string | undefined,
+  email: string,
   fullName: string
 ) {
   if (!(GRANT_EVENT_TYPES as readonly string[]).includes(type)) {
@@ -164,8 +170,8 @@ async function handleImplementacaoPurchase(
 
   if (
     type === "invoice.payment_succeeded" &&
-    event.invoice?.status &&
-    event.invoice.status !== "paid"
+    invoiceStatus &&
+    invoiceStatus !== "paid"
   ) {
     return NextResponse.json({ ignored: true });
   }
@@ -179,7 +185,7 @@ async function handleImplementacaoPurchase(
   }
 
   const { subject, html } = implementacaoCallEmail(fullName, calendlyUrl);
-  const { error } = await sendEmail({ to: event.user.email, subject, html });
+  const { error } = await sendEmail({ to: email, subject, html });
 
   if (error) {
     console.error("[hubla webhook] erro ao enviar e-mail de agendamento:", error);
